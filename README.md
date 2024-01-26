@@ -57,22 +57,6 @@ docker compose exec app rm -rf vendor composer.lock
 docker compose exec app composer install
 ~~~
 
-* installation voyager
-~~~ shell
-
-docker compose exec app php artisan voyager:install --with-dummy
-~~~
-
-* Installer breeze
-~~~ shell
-docker compose exec app composer require laravel/breeze:1.9.2
-docker compose exec app php artisan breeze:install
- 
-docker compose exec app npm install
-docker compose exec app npm run dev
-docker compose exec app php artisan migrate
-~~~
-
 
 * Accéder à l'application
 
@@ -80,9 +64,18 @@ docker compose exec app php artisan migrate
 http://127.0.0.1:8000
 ~~~
 
-
-### Crédentials
+* tester voyager 
+~~~
+http://127.0.0.1:8000/admin
+~~~
 
 __Voyager__  
 admin@admin.com  
 password  
+
+si l'accès à voyager ne fonctionne pas tester l'instruction suivante et croiser les doigts !
+
+~~~ shell
+docker compose exec app php artisan voyager:install --with-dummy
+~~~
+doc install voyager : https://voyager-docs.devdojo.com/getting-started/installation
