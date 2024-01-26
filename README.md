@@ -44,6 +44,10 @@ laravoyager-db      mariadb:10.5        "docker-entrypoint.s…"   db           
 laravoyager-nginx   nginx:1.22-alpine   "/docker-entrypoint.…"   nginx               2 minutes ago       Up 2 minutes        0.0.0.0:8000->80/tcp, :::8000->80/tcp
 ~~~
 
+* Modification des droits sur database
+~~~ shell
+sudo chmod 777 -R database/
+~~~
 
 * Installer les dépendances ( cela crée le dossier vendor)
 
@@ -51,6 +55,12 @@ laravoyager-nginx   nginx:1.22-alpine   "/docker-entrypoint.…"   nginx        
 docker compose exec app rm -rf vendor composer.lock
 
 docker compose exec app composer install
+~~~
+
+* installation voyager
+~~~ shell
+
+docker compose exec app php artisan voyager:install --with-dummy
 ~~~
 
 * Installer breeze
@@ -63,12 +73,6 @@ docker compose exec app npm run dev
 docker compose exec app php artisan migrate
 ~~~
 
-* Ajouter le code suivant dans le fichier routes/web.php
-~~~ shell
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
-~~~
 
 * Accéder à l'application
 
