@@ -1,66 +1,84 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## LaraVoyageur - Container docker Laravel+Voyager Ready to Go
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Contenu
 
-## About Laravel
+3 containers
+* Une application Laravel avec Laravel pre packagé
+* Un serveur nginx
+* Un serveur mariadb
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Source
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Basé sur le tutoriel [Digital Ocean - How To Install and Set Up Laravel with Docker Compose on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-set-up-laravel-with-docker-compose-on-ubuntu-22-04)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+### Quelques modifications du tutoriel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* Utilisation des containers plus récents pour nginx, mysql et php
+* Utilisation de `docker compose` et non pas `docker-compose`
+* Adaptation des noms pour refléter notre application `laravoyager`
+* Un volume persistant pour la base de donnée
+* Le .env est publié pour avoir les infos BDD, etc **(à ne pas faire en production !!!)**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### USage
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* Cloner le dépôt
+* Compiler l'image
 
-## Laravel Sponsors
+~~~ shell
+docker compose build app
+~~~
+* Lancer les containers
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+~~~ shell
+docker compose up -d
+~~~
 
-### Premium Partners
+* Vérifier que les containers s'exécutent correctement
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+~~~ shell
+docker compose ps
+NAME                IMAGE               COMMAND                  SERVICE             CREATED             STATUS              PORTS
+laravoyager-app     laravoyager         "docker-php-entrypoi…"   app                 2 minutes ago       Up 2 minutes        9000/tcp
+laravoyager-db      mariadb:10.5        "docker-entrypoint.s…"   db                  2 minutes ago       Up 2 minutes        3306/tcp
+laravoyager-nginx   nginx:1.22-alpine   "/docker-entrypoint.…"   nginx               2 minutes ago       Up 2 minutes        0.0.0.0:8000->80/tcp, :::8000->80/tcp
+~~~
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* Installer les dépendances ( cela crée le dossier vendor)
 
-## Code of Conduct
+~~~ shell
+docker compose exec app rm -rf vendor composer.lock
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+docker compose exec app composer install
+~~~
 
-## Security Vulnerabilities
+* Installer breeze
+~~~ shell
+docker compose exec app composer require laravel/breeze:1.9.2
+docker compose exec app php artisan breeze:install
+ 
+docker compose exec app npm install
+docker compose exec app npm run dev
+docker compose exec app php artisan migrate
+~~~
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* Ajouter le code suivant dans le fichier routes/web.php
+~~~ shell
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+~~~
 
-## License
+* Accéder à l'application
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+~~~
+http://127.0.0.1:8000
+~~~
+
+
+### Crédentials
+
+__Voyager__  
+admin@admin.com  
+password  
