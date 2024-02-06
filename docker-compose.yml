@@ -4,7 +4,7 @@ services:
     build:
       args:
         user: snir
-        uid: 1000
+        uid: 10032
       context: ./
       dockerfile: Dockerfile
     image: laravoyager
