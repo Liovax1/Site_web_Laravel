@@ -4,11 +4,11 @@ services:
     build:
       args:
         user: snir
-        uid: 1000
+        uid: 10025
       context: ./
       dockerfile: Dockerfile
     image: laravoyager
-    container_name: laravoyager-app
+    container_name: laravoyager10-app
     # restart: unless-stopped
     working_dir: /var/www/
     volumes:
