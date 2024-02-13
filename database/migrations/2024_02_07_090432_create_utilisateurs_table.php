@@ -17,7 +17,8 @@ return new class extends Migration
 	        $table->string('prenom')->unique();
 	        $table->string('mail')->unique();
 	        $table->string('role')->unique();
-	        //$table->foreign('villes_id')->references('id')->on('villes');
+            $table->unsignedBigInteger('ville_id');
+            $table->foreign('ville_id')->references('id')->on('villes')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }

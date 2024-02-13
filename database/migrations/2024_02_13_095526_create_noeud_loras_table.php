@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('appEUI')->nullable();
             $table->string('appKey')->nullable();
             $table->unsignedBigInteger('parking_id');
-            $table->foreign('parking_id')->references('id')->on('parkings');
+            $table->foreign('parking_id')->references('id')->on('parkings')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }
