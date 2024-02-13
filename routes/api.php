@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/wsParking/all', 'App\Http\Controllers\ParkingController@all');
+Route::get('/wsParking/show/{id}', 'App\Http\Controllers\ParkingController@show');
+Route::get('/wsParking/delete/{id}', 'App\Http\Controllers\ParkingController@delete');
+Route::post('/wsParking/add','App\Http\Controllers\parkingController@add')

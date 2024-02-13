@@ -18,7 +18,7 @@ class ParkingsTableSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         DB::table('parkings')->truncate();
         Schema::enableForeignKeyConstraints();
-
+        
 
         $seuil_critique = $this->couleur('orange');
         $seuil_alerte = $this->couleur('rouge');

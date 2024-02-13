@@ -12,11 +12,11 @@ class UtilisateursTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('utilisateurs')->insert([
-            'nom' => 'Hovakimyan',
-            'prenom' => 'Liova',
-            'mail' => 'liova.hovakimyan@outlook.fr',
-	        'role' => 'Administrateur'
-        ]);
+        // DB::table('utilisateurs')->insert([
+        //     'nom' => 'Hovakimyan',
+        //     'prenom' => 'Liova',
+        //     'mail' => 'liova.hovakimyan@outlook.fr',
+	    //     'role' => 'Administrateur'
+        // ]);
     }
 }
