@@ -23,4 +23,13 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::get('/villes',
-    'App\Http\Controllers\PagesVilleController@Villes')->name('villes');
+    'App\Http\Controllers\PagesVilleController@villes')->name('villes');
+
+
+Route::get(
+        '/ville/{id}',
+        'App\Http\Controllers\PagesVilleController@ville')->name('ville');
+
+
+Route::get('/parkings/{id}',
+'App\Http\Controllers\PagesVilleController@parkings')->name('parkings');

@@ -9,7 +9,7 @@ class Ville extends Model
 {
     use HasFactory;
 
-    public function Parking(){
+    public function parkings(){
         return $this->hasMany(Parking::class,'ville_id');
     }
 }
