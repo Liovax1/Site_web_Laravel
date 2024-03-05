@@ -20,8 +20,10 @@
             <td>{!! $parking->longitude !!}</td>
             <td>{!! $parking->nombre_place_dispo !!}</td>
             <td>{!! $parking->nombre_place_total !!}</td>
-            <td>{!! $parking->seuil_critique !!}</td>
-            <td>{!! $parking->seuil_alerte !!}</td>
+            <!-- <td>{!! $parking->seuil_critique !!}</td>
+            <td>{!! $parking->seuil_alerte !!}</td> -->
+            <td style="background-color: {!! $parking->seuil_critique !!}"></td>
+            <td style="background-color: {!! $parking->seuil_alerte !!}"></td>
             <td>{!! $parking->created_at !!}</td>
         </tr>
         @endforeach
