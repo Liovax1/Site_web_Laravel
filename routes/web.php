@@ -20,3 +20,6 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::get('/noeud_loras-all',
+'App\Http\Controllers\PagesNoeudLoraController@all')->name('noeud_loras-all') ;
