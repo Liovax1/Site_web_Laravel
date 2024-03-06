@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom_noeud')->nullable();
             $table->string('type_noeud')->nullable();
-            $table->string('appEUI')->nullable();
-            $table->string('appKey')->nullable();
+            $table->string('dev_eui')->nullable();
             $table->unsignedBigInteger('parking_id');
             $table->foreign('parking_id')->references('id')->on('parkings')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();

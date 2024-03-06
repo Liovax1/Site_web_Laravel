@@ -14,8 +14,7 @@
                 <td>{!! $noeud_lora->parking_id !!}</td>
                 <td>{!! $noeud_lora->nom_noeud !!}</td>
                 <td>{!! $noeud_lora->type_noeud !!}</td>
-                <td>{!! $noeud_lora->appEUI !!}</td>
-                <td>{!! $noeud_lora->appKey !!}</td>
+                <td>{!! $noeud_lora->dev_eui !!}</td>
             <tr>
             @endforeach
         </tbody>
