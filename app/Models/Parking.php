@@ -10,6 +10,10 @@ class Parking extends Model
     use HasFactory;
 
     public function Ville(){
-        return $this->belongsTO(Ville::class,'ville_id');
+        return $this->belongsTo(Ville::class,'ville_id');
+    }
+
+    public function NoeudLora(){
+        return $this->hasMany(NoeudLora::class,'parking_id');
     }
 }

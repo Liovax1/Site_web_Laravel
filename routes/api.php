@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/setPlaceDispo/{idParking}/{nombrePlaceDispo}', 'App\Http\Controllers\ApiGaBuZoMeuController@setPlaceDispo')->name('setPlaceDispo');
+Route::get('/getInfoNoeud/{infoNoeudParking}', 'App\Http\Controllers\ApiGaBuZoMeuController@getInfoNoeud')->name('getInfoNoeud');
