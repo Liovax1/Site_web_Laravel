@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Ville : {!! $villeFind->nom !!}</title>
+    <br><title>Ville : {!! $villeFind->nom !!}</title>
 </head>
 <body>
     <h1 class="text-center">Ville : {!! $villeFind->nom !!}</h1>

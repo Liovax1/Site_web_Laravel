@@ -11,7 +11,7 @@
     <title>Villes</title>
 </head>
 <body>
-    <h1 class="text-center">Villes :</h1>
+    <br><h1 class="text-center">Villes :</h1><br>
 
     @foreach($villes as $ville)
     <!-- Formulaire pour chaque ville -->
