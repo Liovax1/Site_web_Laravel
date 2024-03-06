@@ -82,3 +82,4 @@ class ParkingsTableSeeder extends Seeder
         return $couleurs[$nom] ?? null;
     }
 }
+
