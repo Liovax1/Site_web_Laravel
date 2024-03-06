@@ -25,7 +25,7 @@ class ApiGaBuZoMeuController extends Controller
 
 
 function getInfoNoeud($idNoeud){
-    $noeudFind = NoeudLora::where('AppEUI', $idNoeud)->first();;
+    $noeudFind = NoeudLora::where('dev_eui', $idNoeud)->first();;
     if ($noeudFind == null){
     return response()->json(['Erreur' => 'None'], 422);
     }
