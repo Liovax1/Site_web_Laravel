@@ -17,6 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::get('/villes',
+    'App\Http\Controllers\PagesVilleController@villes')->name('villes');
+
+
+Route::get(
+        '/ville/{id}',
+        'App\Http\Controllers\PagesVilleController@ville')->name('ville');
+
+
+Route::get('/parkings/{id}',
+'App\Http\Controllers\PagesVilleController@parkings')->name('parkings');
