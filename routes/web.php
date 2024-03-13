@@ -33,3 +33,12 @@ Route::get(
 
 Route::get('/parkings/{id}',
 'App\Http\Controllers\PagesVilleController@parkings')->name('parkings');
+
+
+Route::get('/tousLesParkings',
+'App\Http\Controllers\PagesVilleController@tousLesParkings')->name('tousLesParkings');
+
+
+Route::post('/save', 'App\Http\Controllers\PagesVilleController@save');
+
+

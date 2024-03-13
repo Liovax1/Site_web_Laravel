@@ -15,6 +15,7 @@
 
     <!-- Formulaire pour la ville -->
     <form method="post" action="/save" class="container mb-5">
+    @csrf
         <div class="form-group">
             <label for="id">ID:</label>
             <input type="text" id="id" name="id" value="{!! $villeFind->id !!}" class="form-control">
