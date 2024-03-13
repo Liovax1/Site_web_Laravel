@@ -23,3 +23,6 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/noeud_loras-all',
 'App\Http\Controllers\PagesNoeudLoraController@all')->name('noeud_loras-all') ;
+
+Route::get('/accueil',
+'App\Http\Controllers\PagesAccueilController@accueil')->name('accueil') ;

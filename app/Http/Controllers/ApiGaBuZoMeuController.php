@@ -30,17 +30,33 @@ class ApiGaBuZoMeuController extends Controller
             }
         else {
             $parkingFind = Parking::find($noeudFind->parking_id);
-            $infos = [];
             $EuiAfficheur = NoeudLora::where('parking_id', $noeudFind->parking_id)
             ->where('type_noeud', 'LIKE', 'A%')
             ->pluck('dev_eui') // Pour récupérer uniquement la valeur de la colonne "nom_noeud" des résultats de la requete, sinon ca prend tout
             ->toArray(); // Pour mettre dans un tableau
-
-            //$EuiAfficheur = array_diff($EuiAfficheur, [$devEui]);
             
             $typeNoeud = $noeudFind->type_noeud; // On récupère le type de noeud de l'url
             
             return response()->json(['ID' => $noeudFind->parking_id, 'Places dispos' => $parkingFind->nombre_place_dispo,'Type' => $typeNoeud, 'Afficheurs' => $EuiAfficheur], 200);
             }
-            }
-      }
+            } 
+
+
+                function getInfoParking(){
+                    $parkings = Parking::all();
+                    
+                    $parkingInfo = [];
+
+                    foreach ($parkings as $parking) {
+                    $parkingInfo[] = ['ID' => $parking->id, 'Places dispos' => $parking->nombre_place_dispo];
+                    }
+                    
+                    return response()->json($parkingInfo, 200);
+                    }
+
+
+}
+
+// if ($parkingFind == null){
+//                 return response()->json(['Erreur' => 'None'], 422);
+//                 }
