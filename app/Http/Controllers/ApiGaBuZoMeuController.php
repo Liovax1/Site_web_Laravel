@@ -33,12 +33,12 @@ class ApiGaBuZoMeuController extends Controller
             $infos = [];
             $EuiAfficheur = NoeudLora::where('parking_id', $noeudFind->parking_id)
             ->where('dev_eui', 'LIKE', '%')
-            ->pluck('dev_eui')
-            ->toArray();
+            ->pluck('dev_eui') // Pour récupérer uniquement la valeur de la colonne "nom_noeud" des résultats de la requete, sinon ca prend tout
+            ->toArray(); // Pour mettre dans un tableau
+
+            $EuiAfficheur = array_diff($EuiAfficheur, [$devEui]);
             
-            array_shift($EuiAfficheur);
-            
-            $typeNoeud = $noeudFind->type_noeud; // On récupère le type de noeud
+            $typeNoeud = $noeudFind->type_noeud; // On récupère le type de noeud de l'url
             
             return response()->json(['ID' => $noeudFind->parking_id, 'Place dispo' => $parkingFind->nombre_place_dispo,'Type' => $typeNoeud, 'Afficheur' => $EuiAfficheur], 200);
             }
