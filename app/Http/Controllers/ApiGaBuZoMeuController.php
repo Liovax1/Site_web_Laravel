@@ -23,15 +23,24 @@ class ApiGaBuZoMeuController extends Controller
     }
 
 
-
-function getInfoNoeud($idNoeud){
-    $noeudFind = NoeudLora::where('dev_eui', $idNoeud)->first();;
-    if ($noeudFind == null){
-    return response()->json(['Erreur' => 'None'], 422);
-    }
-    else {
-    $parkingFind = Parking::find($noeudFind->parking_id);
-    return response()->json(['ID' => $noeudFind->parking_id,  'Place dispo' => $parkingFind->nombre_place_dispo, 'Type' => $noeudFind->type_noeud], 200);
-    }
-    }
-}
+        function getInfoNoeud($devEui){
+            $noeudFind = NoeudLora::where('dev_eui', $devEui)->first();
+            if ($noeudFind == null){
+            return response()->json(['Erreur' => 'None'], 422);
+            }
+            else {
+            $parkingFind = Parking::find($noeudFind->parking_id);
+            $infos = [];
+            $EuiAfficheur = NoeudLora::where('parking_id', $noeudFind->parking_id)
+            ->where('dev_eui', 'LIKE', '%')
+            ->pluck('dev_eui')
+            ->toArray();
+            
+            array_shift($EuiAfficheur);
+            
+            $typeNoeud = $noeudFind->type_noeud; // On récupère le type de noeud
+            
+            return response()->json(['ID' => $noeudFind->parking_id, 'Place dispo' => $parkingFind->nombre_place_dispo,'Type' => $typeNoeud, 'Afficheur' => $EuiAfficheur], 200);
+            }
+            }
+      }
