@@ -42,21 +42,15 @@ class ApiGaBuZoMeuController extends Controller
             } 
 
 
-                function getInfoParking(){
-                    $parkings = Parking::all();
+    function getInfoParking(){
+        $parkings = Parking::all();
                     
-                    $parkingInfo = [];
+        $parkingInfo = [];
 
-                    foreach ($parkings as $parking) {
-                    $parkingInfo[] = ['ID' => $parking->id, 'Places dispos' => $parking->nombre_place_dispo];
-                    }
+        foreach ($parkings as $parking) {
+            $parkingInfo[] = ['ID' => $parking->id, 'Places dispos' => $parking->nombre_place_dispo];
+            }
                     
-                    return response()->json($parkingInfo, 200);
-                    }
-
-
+            return response()->json($parkingInfo, 200);
+            }
 }
-
-// if ($parkingFind == null){
-//                 return response()->json(['Erreur' => 'None'], 422);
-//                 }
