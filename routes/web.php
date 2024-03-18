@@ -39,6 +39,9 @@ Route::get('/tousLesParkings',
 'App\Http\Controllers\PagesVilleController@tousLesParkings')->name('tousLesParkings');
 
 
+Route::post('/saveVille', 'App\Http\Controllers\PagesVilleController@saveVille');
+
 Route::post('/save', 'App\Http\Controllers\PagesVilleController@save');
+
 
 

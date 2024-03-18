@@ -55,28 +55,47 @@ class PagesVilleController extends Controller
     }
 
     public function save(Request $request)
-    {
-        // Trouver le parking par son ID
-        $parking = Parking::find($request->input('id'));
-    
-        if ($parking) {
-            // Mettre à jour les attributs du parking
-            $parking->nom_parking = $request->input('nom_parking');
-            $parking->latitude = $request->input('latitude');
-            $parking->longitude = $request->input('longitude');
-            $parking->nombre_place_dispo = $request->input('nombre_place_dispo');
-            $parking->nombre_place_total = $request->input('nombre_place_total');
-            $parking->ville_id = $request->input('ville'); 
-            // Enregistrer les modifications
-            $parking->save();
-        } else {
-            
-            return redirect()->back()->withErrors(['error' => 'Parking not found']);
+{
+    foreach ($request->all() as $key => $value) {
+        if (str_starts_with($key, 'id_')) {
+            $id = substr($key, 3);
+            $parking = Parking::find($id);
+            if ($parking) {
+                // Mettre à jour les attributs du parking
+                $parking->latitude = $request->input('latitude_'.$id);
+                $parking->longitude = $request->input('longitude_'.$id);
+                $parking->nombre_place_dispo = $request->input('nombre_place_dispo_'.$id);
+                $parking->nombre_place_total = $request->input('nombre_place_total_'.$id);
+                $parking->ville_id = $request->input('ville_'.$id); 
+                // Enregistrer les modifications
+                $parking->save();
+            }
         }
-    
-        // Rediriger l'utilisateur vers une page de confirmation
-        return back();
+    }
+    // Rediriger l'utilisateur vers une page de confirmation
+    return back();
+}
+
+
+    public function saveVille(Request $request)
+{
+    // Trouver la ville par son ID
+    $ville = Ville::find($request->input('id'));
+
+    if ($ville) {
+        // Mettre à jour les attributs de la ville
+        $ville->nom = $request->input('nom');
+        $ville->latitude = $request->input('latitude');
+        $ville->longitude = $request->input('longitude');
+        $ville->code_postal = $request->input('code_postal');
+        // Enregistrer les modifications
+        $ville->save();
+    } else {
+        return redirect()->back()->withErrors(['error' => 'Ville not found']);
     }
 
+    // Rediriger l'utilisateur vers une page de confirmation
+    return back();
+}
 }
 
