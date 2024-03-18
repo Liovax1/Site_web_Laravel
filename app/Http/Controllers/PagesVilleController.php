@@ -66,13 +66,11 @@ class PagesVilleController extends Controller
             $parking->longitude = $request->input('longitude');
             $parking->nombre_place_dispo = $request->input('nombre_place_dispo');
             $parking->nombre_place_total = $request->input('nombre_place_total');
-            $parking->ville_id = $request->input('ville'); // Assurez-vous que 'ville' est le nom du champ de sélection dans votre formulaire
-    
+            $parking->ville_id = $request->input('ville'); 
             // Enregistrer les modifications
             $parking->save();
         } else {
-            // Gérer le cas où le parking n'est pas trouvé
-            // Par exemple, vous pouvez rediriger l'utilisateur vers une page d'erreur
+            
             return redirect()->back()->withErrors(['error' => 'Parking not found']);
         }
     

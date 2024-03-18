@@ -8,15 +8,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Les parkings de la ville : {!! $ville->nom !!}</title>
+    <title>Tous les parkings</title>
 </head>
 <body>
-    <h1 class="text-center">Les parkings de la ville : {!! $ville->nom !!}</h1><br>
+    <h1 class="text-center">Tous les parkings</h1><br>
 
     <!-- Formulaires pour les parkings -->
     <form method="post" action="/save" class="container mb-5">
     @csrf
-    <input type="hidden" name="id" value="{!! $ville->id !!}">
     @foreach( $parkings as $parking)
         <h2>{!! $parking->nom_parking !!}</h2>
         <div class="form-group">
@@ -34,6 +33,14 @@
         <div class="form-group">
             <label for="nombre_place_total">Nombre total de places:</label>
             <input type="text" id="nombre_place_total" name="nombre_place_total" value="{!! $parking->nombre_place_total !!}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ville">Ville:</label>
+            <select id="ville" name="ville" class="form-control">
+            @foreach( $villes as $ville)
+                <option value="{!! $ville->nom !!}">{!! $ville->nom !!}</option>
+            @endforeach
+            </select>
         </div><br>
     @endforeach
 
