@@ -11,10 +11,10 @@
             @foreach($noeud_loras as $noeud_lora)
             <tr>
                 <td>{!! $noeud_lora->id !!}</td>
-                <td>{!! $noeud_lora->parking_id !!}</td>
                 <td>{!! $noeud_lora->nom_noeud !!}</td>
                 <td>{!! $noeud_lora->type_noeud !!}</td>
                 <td>{!! $noeud_lora->dev_eui !!}</td>
+                <td>{!! $noeud_lora->parking_id !!}</td>
             <tr>
             @endforeach
         </tbody>
