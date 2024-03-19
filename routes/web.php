@@ -36,7 +36,6 @@ Route::get('/parkings/{id}',
 Route::get('/noeud_loras-all',
 'App\Http\Controllers\PagesNoeudLoraController@all')->name('noeud_loras-all') ;
 
-<<<<<<< HEAD
 
 Route::get('/tousLesParkings',
 'App\Http\Controllers\PagesVilleController@tousLesParkings')->name('tousLesParkings');
@@ -48,7 +47,5 @@ Route::post('/save', 'App\Http\Controllers\PagesVilleController@save');
 
 
 
-=======
 Route::get('/accueil',
 'App\Http\Controllers\PagesAccueilController@accueil')->name('accueil') ;
->>>>>>> 34b8f2d5a2a11a16d1c777abef8dbaf6e5e13a0f
