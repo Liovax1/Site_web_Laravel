@@ -56,6 +56,7 @@ class PagesVilleController extends Controller
 
     public function save(Request $request)
 {
+    // dd($request->all());
     foreach ($request->all() as $key => $value) {
         if (str_starts_with($key, 'id_')) {
             $id = substr($key, 3);

@@ -36,10 +36,10 @@
             <input type="text" id="nombre_place_total_{!! $parking->id !!}" name="nombre_place_total_{!! $parking->id !!}" value="{!! $parking->nombre_place_total !!}" class="form-control">
         </div>
         <div class="form-group">
-    <label for="ville_{!! $parking->id !!}">Ville:</label>
-    <select id="ville_{!! $parking->id !!}" name="ville_{!! $parking->id !!}" class="form-control">
-    @foreach( $villes as $ville)
-        <option value="{!! $ville->id !!}">{!! $ville->nom !!}</option>
+        <label for="ville_{!! $parking->id !!}">Ville:</label>
+        <select id="ville_{!! $parking->id !!}" name="ville_{!! $parking->id !!}" class="form-control">
+            @foreach( $villes as $ville)
+                <option value="{!! $ville->id !!}" @if($ville->id == $parking->ville_id) selected @endif>{!! $ville->nom !!}</option>
     @endforeach
     </select>
         </div><br>
