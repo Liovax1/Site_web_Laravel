@@ -45,7 +45,9 @@ Route::post('/saveVille', 'App\Http\Controllers\PagesVilleController@saveVille')
 
 Route::post('/save', 'App\Http\Controllers\PagesVilleController@save');
 
+Route::post('/saveNoeud', 'App\Http\Controllers\PagesNoeudLoraController@saveNoeud');
 
+Route::get('/noeud_loras', 'PagesNoeudLoraController@edit');
 
 Route::get('/accueil',
 'App\Http\Controllers\PagesAccueilController@accueil')->name('accueil') ;

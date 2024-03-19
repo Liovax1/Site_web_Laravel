@@ -36,6 +36,7 @@ class ParkingsTableSeeder extends Seeder
                 'seuil_alerte'=>$seuil_alerte
 
             ],
+            
 
             [
                 'nom_parking'=>'Place Maréchal de Turenne',

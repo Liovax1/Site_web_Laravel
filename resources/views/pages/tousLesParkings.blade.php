@@ -19,29 +19,33 @@
     @foreach( $parkings as $parking)
         <h2>{!! $parking->nom_parking !!}</h2>
         <input type="hidden" name="id_{!! $parking->id !!}" value="{!! $parking->id !!}">
-        <div class="form-group">
-            <label for="latitude_{!! $parking->id !!}">Latitude:</label>
-            <input type="text" id="latitude_{!! $parking->id !!}" name="latitude_{!! $parking->id !!}" value="{!! $parking->latitude !!}" class="form-control">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="latitude_{!! $parking->id !!}">Latitude:</label>
+                <input type="text" id="latitude_{!! $parking->id !!}" name="latitude_{!! $parking->id !!}" value="{!! $parking->latitude !!}" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="longitude_{!! $parking->id !!}">Longitude:</label>
+                <input type="text" id="longitude_{!! $parking->id !!}" name="longitude_{!! $parking->id !!}" value="{!! $parking->longitude !!}" class="form-control">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nombre_place_dispo_{!! $parking->id !!}">Nombre de places disponibles:</label>
+                <input type="text" id="nombre_place_dispo_{!! $parking->id !!}" name="nombre_place_dispo_{!! $parking->id !!}" value="{!! $parking->nombre_place_dispo !!}" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="nombre_place_total_{!! $parking->id !!}">Nombre total de places:</label>
+                <input type="text" id="nombre_place_total_{!! $parking->id !!}" name="nombre_place_total_{!! $parking->id !!}" value="{!! $parking->nombre_place_total !!}" class="form-control">
+            </div>
         </div>
         <div class="form-group">
-            <label for="longitude_{!! $parking->id !!}">Longitude:</label>
-            <input type="text" id="longitude_{!! $parking->id !!}" name="longitude_{!! $parking->id !!}" value="{!! $parking->longitude !!}" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="nombre_place_dispo_{!! $parking->id !!}">Nombre de places disponibles:</label>
-            <input type="text" id="nombre_place_dispo_{!! $parking->id !!}" name="nombre_place_dispo_{!! $parking->id !!}" value="{!! $parking->nombre_place_dispo !!}" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="nombre_place_total_{!! $parking->id !!}">Nombre total de places:</label>
-            <input type="text" id="nombre_place_total_{!! $parking->id !!}" name="nombre_place_total_{!! $parking->id !!}" value="{!! $parking->nombre_place_total !!}" class="form-control">
-        </div>
-        <div class="form-group">
-        <label for="ville_{!! $parking->id !!}">Ville:</label>
-        <select id="ville_{!! $parking->id !!}" name="ville_{!! $parking->id !!}" class="form-control">
-            @foreach( $villes as $ville)
-                <option value="{!! $ville->id !!}" @if($ville->id == $parking->ville_id) selected @endif>{!! $ville->nom !!}</option>
-    @endforeach
-    </select>
+            <label for="ville_{!! $parking->id !!}">Ville:</label>
+            <select id="ville_{!! $parking->id !!}" name="ville_{!! $parking->id !!}" class="form-control">
+                @foreach( $villes as $ville)
+                    <option value="{!! $ville->id !!}" @if($ville->id == $parking->ville_id) selected @endif>{!! $ville->nom !!}</option>
+                @endforeach
+            </select>
         </div><br>
     @endforeach
 
