@@ -23,48 +23,42 @@ class NoeudLorasTableSeeder extends Seeder
         [   
             'nom_noeud' => 'D1',
             'type_noeud' => 'Input',
-            'appEUI' => '123456',
-	        'appKey' => '123456',
+            'dev_eui' => '123456',
             'parking_id'=>1
         ],
 
         [   
             'nom_noeud' => 'D2',
             'type_noeud' => 'Output',
-            'appEUI' => '135790',
-	        'appKey' => '135790',
+            'dev_eui' => '135790',
             'parking_id'=>1
         ],
 
         [   
             'nom_noeud' => 'A1',
             'type_noeud' => 'Afficheur',
-            'appEUI' => '000000',
-	        'appKey' => '000000',
+            'dev_eui' => '000000',
             'parking_id'=>1
         ],
 
         [   
             'nom_noeud' => 'D3',
             'type_noeud' => 'Input',
-            'appEUI' => '123456',
-	        'appKey' => '123456',
+            'dev_eui' => '123456',
             'parking_id'=>2
         ],
 
         [   
             'nom_noeud' => 'D4',
             'type_noeud' => 'Output',
-            'appEUI' => '123456',
-	        'appKey' => '123456',
+            'dev_eui' => '123456',
             'parking_id'=>2
         ],
 
         [   
             'nom_noeud' => 'A2',
             'type_noeud' => 'Afficheur',
-            'appEUI' => '123456',
-	        'appKey' => '123456',
+            'dev_eui' => '123456',
             'parking_id'=>2
         ],
 

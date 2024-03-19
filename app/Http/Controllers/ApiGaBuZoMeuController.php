@@ -48,7 +48,7 @@ class ApiGaBuZoMeuController extends Controller
         $parkingInfo = [];
 
         foreach ($parkings as $parking) {
-            $parkingInfo[] = ['ID' => $parking->id, 'Places dispos' => $parking->nombre_place_dispo];
+            $parkingInfo[] = ['ID' => $parking->id, 'Places dispos' => $parking->nombre_place_dispo, 'Places totales' => $parking->nombre_place_total];
             }
                     
             return response()->json($parkingInfo, 200);
