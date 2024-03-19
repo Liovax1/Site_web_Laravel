@@ -26,3 +26,9 @@ Route::get('/noeud_loras-all',
 
 Route::get('/accueil',
 'App\Http\Controllers\PagesAccueilController@accueil')->name('accueil') ;
+
+Route::get('/apropos',
+'App\Http\Controllers\PagesAproposController@apropos')->name('apropos') ;
+
+Route::get('/connexion',
+'App\Http\Controllers\PagesConnexionController@connexion')->name('connexion') ;
