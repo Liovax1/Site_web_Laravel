@@ -45,7 +45,7 @@
         @endforeach
 
         <br><div class="form-group text-right">
-            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
             <button type="reset" class="btn btn-secondary">Annuler</button>
         </div>
     </form>

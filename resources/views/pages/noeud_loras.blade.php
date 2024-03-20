@@ -52,7 +52,7 @@
 
         
         <div class="text-right mt-5">
-            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+            <button type="submit" class="btn btn-primary mr-2">Sauvegarder</button>
             <button type="reset" class="btn btn-secondary">Annuler</button>
         </div>
     </form>
