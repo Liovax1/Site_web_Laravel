@@ -16,8 +16,8 @@
         <form method="POST" action="{{ route('connexion') }}">
             @csrf
             <div class="form-group">
-                <label for="email">Mail</label>
-                <input type="text" class="form-control" id="email" placeholder="Entrez votre nom d'utilisateur">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" placeholder="Email">
             </div>
             <div class="form-group">
                 <label for="password">Mot de passe</label>
