@@ -8,19 +8,41 @@ use Illuminate\Http\Request;
 
 class ApiGaBuZoMeuController extends Controller
 {
+    
+
     function setPlaceDispo($idParking, $nombrePlaceDispo){
         $parking = new Parking();
-        $parkingFind = $parking->find($idParking);
-
-        if ($parkingFind == null) 
-            return response()->json(['None' => $idParking], 422);
+        $parking = Parking::find($idParking);
+        
+        if ($parking == null)
+        return response()->json(['None' => $idParking], 422);
         else {
-            $parkingFind->nombre_place_dispo = $nombrePlaceDispo;
-            //dd($parkingFind);
-            $parkingFind->save();
-            return response()->json(['Place dispo' => $nombrePlaceDispo], 200);
+        if ($nombrePlaceDispo < 0) {
+        return response()->json(['Erreur' => 'Valeur négative'], 422);
         }
-    }
+        
+        $nombreTotalPlacesParking = $parking->nombre_place_total;
+        
+        if ($nombrePlaceDispo > $nombreTotalPlacesParking) {
+        return response()->json(['Erreur' => 'Valeur Dépassée'], 422);
+        }
+        
+        $parking->nombre_place_dispo = $nombrePlaceDispo;
+        //dd($parkingFind);
+        $parking->save();
+        return response()->json(['Place dispo' => $nombrePlaceDispo], 200);
+        }
+        }
+
+
+
+
+
+
+
+
+
+
 
 
     function getInfoNoeud($devEui){

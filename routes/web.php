@@ -32,3 +32,12 @@ Route::get('/apropos',
 
 Route::get('/connexion',
 'App\Http\Controllers\PagesConnexionController@connexion')->name('connexion') ;
+
+//Route::post('/connexion', 'PagesConnexionController@connexion')->name('connexion');
+
+
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/', 'HomeController@index')->name('connexion');
+// });
+
+// Auth::routes();
