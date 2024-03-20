@@ -33,6 +33,7 @@ Route::get(
 
 Route::get('/parkings/{id}',
 'App\Http\Controllers\PagesVilleController@parkings')->name('parkings');
+
 Route::get('/noeud_loras-all',
 'App\Http\Controllers\PagesNoeudLoraController@all')->name('noeud_loras-all') ;
 
@@ -47,7 +48,7 @@ Route::post('/save', 'App\Http\Controllers\PagesVilleController@save');
 
 Route::post('/saveNoeud', 'App\Http\Controllers\PagesNoeudLoraController@saveNoeud');
 
-Route::get('/noeud_loras', 'PagesNoeudLoraController@edit');
+// Route::get('/noeud_loras', 'PagesNoeudLoraController@edit');
 
 Route::get('/accueil',
 'App\Http\Controllers\PagesAccueilController@accueil')->name('accueil') ;

@@ -14,7 +14,7 @@
     <h1 class="text-center">Ville : {!! $villeFind->nom !!}</h1>
 
     <!-- Formulaire pour la ville -->
-    <form method="post" action="/saveVille" class="container mb-5">
+    <form method="post" action="/save" class="container mb-5">
     @csrf
         <div class="form-group">
             <label for="id">ID:</label>

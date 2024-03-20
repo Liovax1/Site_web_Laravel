@@ -8,10 +8,10 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Tous les parkings</title>
+    <title>Parkings</title>
 </head>
 <body>
-    <h1 class="text-center">Tous les parkings</h1><br>
+    <h1 class="text-center">Parkings</h1><br>
 
     <!-- Formulaires pour les parkings -->
     <form method="post" action="/save" class="container mb-5">
@@ -59,6 +59,23 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+document.querySelector('form').addEventListener('submit', function(e) {
+    // Parcourir tous les champs du formulaire
+    var inputs = this.querySelectorAll('input[type="text"], select');
+    for (var i = 0; i < inputs.length; i++) {
+        // Vérifier si le champ est vide
+        if (inputs[i].value == '') {
+            // Empêcher la soumission du formulaire
+            e.preventDefault();
+            // Afficher un message d'erreur
+            alert('Veuillez remplir tous les champs du formulaire.');
+            // Sortir de la boucle
+            break;
+        }
+    }
+});
+</script>
 </body>
 </html>
 
