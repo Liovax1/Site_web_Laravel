@@ -17,7 +17,6 @@ class PagesVilleController extends Controller
         return view ('pages/villes')
         ->with('villes',$villes)
         ->with('nomsChamps',$nomsChamps);
-        
     }
         
     
