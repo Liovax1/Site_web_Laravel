@@ -16,12 +16,10 @@
     <br>
     <h1 class="text-center">Villes :</h1><br>
 
-    
-    <!-- Formulaire pour chaque ville -->
-    <form method="post" action="/saveVille" class="container mb-5">
-        @csrf
-        @foreach($villes as $ville)
-        <input type="hidden" id="id" name="id" value="{!! $ville->id !!}">
+    <form method="post" class="container mb-5">
+        <!-- @csrf -->
+        <!-- @foreach($villes as $ville) -->
+        <!-- <input type="hidden" id="id" name="id" value="{!! $ville->id !!}"> -->
         <!-- <div class="form-group">
             <h3>{!! $ville->nom !!}</h3>
         </div>
@@ -46,7 +44,7 @@
             </div>
         </div><br> -->
 
-        @endforeach
+        <!-- @endforeach -->
 
         <table class="table">
     <thead>
@@ -67,42 +65,23 @@
             <td>{!! $ville->latitude !!}</td>
             <td>{!! $ville->longitude !!}</td>
             <td><button type="button" class="btn btn-primary">Éditer</button></td>
-            <td><button type="button" class="btn btn-secondary">Modifier</button></td>
+            <td><button type="button" class="btn btn-danger">supprimer</button></td>
         </tr>
         @endforeach
     </tbody>
 </table>
 
-
-
-
-        <br>
+        
         <!-- <div class="form-group text-right">
             <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
             <button type="reset" class="btn btn-secondary">Annuler</button>
         </div> -->
-    </form>
+    <!-- </form> -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>
-document.querySelector('form').addEventListener('submit', function(e) {
-    // Parcourir tous les champs du formulaire
-    var inputs = this.querySelectorAll('input[type="text"], select');
-    for (var i = 0; i < inputs.length; i++) {
-        // Vérifier si le champ est vide
-        if (inputs[i].value == '') {
-            // Empêcher la soumission du formulaire
-            e.preventDefault();
-            // Afficher un message d'erreur
-            alert('Veuillez remplir tous les champs du formulaire.');
-            // Sortir de la boucle
-            break;
-        }
-    }
-});
-</script>
+    
 </body>
 
 </html>
