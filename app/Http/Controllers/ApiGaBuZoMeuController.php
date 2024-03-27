@@ -11,20 +11,19 @@ class ApiGaBuZoMeuController extends Controller
     
 
     function setPlaceDispo($idParking, $nombrePlaceDispo){
-        $parking = new Parking();
         $parking = Parking::find($idParking);
         
         if ($parking == null)
-        return response()->json(['None' => $idParking], 422);
+            return response()->json(['None' => $idParking], 422);
         else {
-        if ($nombrePlaceDispo < 0) {
-        return response()->json(['Erreur' => 'Valeur négative'], 422);
-        }
+            if ($nombrePlaceDispo < 0) {
+                return response()->json(['Erreur' => 'Valeur négative'], 422);
+            }
         
         $nombreTotalPlacesParking = $parking->nombre_place_total;
         
         if ($nombrePlaceDispo > $nombreTotalPlacesParking) {
-        return response()->json(['Erreur' => 'Valeur Dépassée'], 422);
+            return response()->json(['Erreur' => 'Valeur Dépassée'], 422);
         }
         
         $parking->nombre_place_dispo = $nombrePlaceDispo;
@@ -35,27 +34,17 @@ class ApiGaBuZoMeuController extends Controller
         }
 
 
-
-
-
-
-
-
-
-
-
-
     function getInfoNoeud($devEui){
-        $noeudFind = NoeudLora::where('dev_eui', $devEui)->first();
+        $noeudFind = NoeudLora::where('dev_eui', $devEui)->first(); // On cherche un noeud lora dans la table "noeud_loras" où la colonne "dev_eui" correspond à la valeur du devEUI du noeud
         if ($noeudFind == null){
             return response()->json(['Erreur' => 'None'], 422);
             }
         else {
             $parkingFind = Parking::find($noeudFind->parking_id);
             $EuiAfficheur = NoeudLora::where('parking_id', $noeudFind->parking_id)
-            ->where('type_noeud', 'LIKE', 'A%')
-            ->pluck('dev_eui') // Pour récupérer uniquement la valeur de la colonne "nom_noeud" des résultats de la requete, sinon ca prend tout
-            ->toArray(); // Pour mettre dans un tableau
+                ->where('type_noeud', 'LIKE', 'A%')
+                ->pluck('dev_eui') // Pour récupérer uniquement les valeurs de la colonne "dev_eui", sinon ca prend tout
+                ->toArray(); // Pour mettre dans un tableau
             
             $typeNoeud = $noeudFind->type_noeud; // On récupère le type de noeud de l'url
             

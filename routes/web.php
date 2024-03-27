@@ -31,7 +31,6 @@ Route::get('/apropos',
 'App\Http\Controllers\PagesAproposController@apropos')->name('apropos') ;
 
 Route::get('/connexion',
-'App\Http\Controllers\PagesConnexionController@connexion')->name('connexion') ;
+'App\Http\Controllers\Auth\LoginController@connexion')->name('connexion') ;
 
-//Route::post('/connexion', 'PagesConnexionController@connexion')->name('connexion');
-
+Auth::routes();
