@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -10,10 +11,55 @@
 
     <title>Parkings</title>
 </head>
+
 <body>
+    <br>
     <h1 class="text-center">Parkings</h1><br>
 
-    <!-- Formulaires pour les parkings -->
+    <!-- Tableau pour les parkings -->
+    <div class="container mb-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">Nom</th>
+                    <th class="text-center">Ville</th>
+                    <th class="text-center">Latitude</th>
+                    <th class="text-center">Longitude</th>
+                    <th class="text-center">Places disponibles</th>
+                    <th class="text-center">Total de places</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach( $parkings as $parking)
+                <tr>
+                    <td class="text-center">{!! $parking->nom_parking !!}</td>
+                    <td class="text-center">{!! $parking->ville->nom !!}</td>
+                    <td class="text-center">{!! $parking->latitude !!}</td>
+                    <td class="text-center">{!! $parking->longitude !!}</td>
+                    <td class="text-center">{!! $parking->nombre_place_dispo !!}</td>
+                    <td class="text-center">{!! $parking->nombre_place_total !!}</td>
+                    <td class="text-center"><button type="button" class="btn btn-primary mr-2">Éditer</button></td>
+                    <td class="text-center"><button type="button" class="btn btn-danger">supprimer</button></td>
+                    <!-- <a href="/edit/{!! $parking->id !!}" class="btn btn-primary mr-3">Éditer</a>
+                            <a href="/delete/{!! $parking->id !!}" class="btn btn-danger">Supprimer</a> -->
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+
+<!-- Formulaires pour les parkings
     <form method="post" action="/save" class="container mb-5">
     @csrf
     @foreach( $parkings as $parking)
@@ -54,28 +100,4 @@
             <button type="submit" class="btn btn-primary mr-2">Sauvegarder</button>
             <button type="reset" class="btn btn-secondary">Annuler</button>
         </div>
-    </form>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>
-document.querySelector('form').addEventListener('submit', function(e) {
-    // Parcourir tous les champs du formulaire
-    var inputs = this.querySelectorAll('input[type="text"], select');
-    for (var i = 0; i < inputs.length; i++) {
-        // Vérifier si le champ est vide
-        if (inputs[i].value == '') {
-            // Empêcher la soumission du formulaire
-            e.preventDefault();
-            // Afficher un message d'erreur
-            alert('Veuillez remplir tous les champs du formulaire.');
-            // Sortir de la boucle
-            break;
-        }
-    }
-});
-</script>
-</body>
-</html>
-
+    </form> -->

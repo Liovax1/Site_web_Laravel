@@ -49,23 +49,21 @@
         <table class="table">
     <thead>
         <tr>
-            <th>Nom</th>
-            <th>Code Postal</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
-            <th>Éditer</th>
-            <th>Modifier</th>
+            <th class="text-center">Nom</th>
+            <th class="text-center">Code Postal</th>
+            <th class="text-center">Latitude</th>
+            <th class="text-center">Longitude</th>
         </tr>
     </thead>
     <tbody>
         @foreach($villes as $ville)
         <tr>
-            <td>{!! $ville->nom !!}</td>
-            <td>{!! $ville->code_postal !!}</td>
-            <td>{!! $ville->latitude !!}</td>
-            <td>{!! $ville->longitude !!}</td>
-            <td><button type="button" class="btn btn-primary">Éditer</button></td>
-            <td><button type="button" class="btn btn-danger">supprimer</button></td>
+            <td class="text-center">{!! $ville->nom !!}</td>
+            <td class="text-center">{!! $ville->code_postal !!}</td>
+            <td class="text-center">{!! $ville->latitude !!}</td>
+            <td class="text-center">{!! $ville->longitude !!}</td>
+            <td class="text-center"><button type="button" class="btn btn-primary">Éditer</button></td>
+            <td class="text-center"><button type="button" class="btn btn-danger">supprimer</button></td>
         </tr>
         @endforeach
     </tbody>
