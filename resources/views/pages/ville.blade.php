@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-
-    <br><title>Ville : {!! $villeFind->nom !!}</title>
-</head>
-<body>
+@extends('layouts.default')
+@section('content')
     <h1 class="text-center">Ville : {!! $villeFind->nom !!}</h1>
 
     <!-- Formulaire pour la ville -->
@@ -64,6 +53,5 @@ document.querySelector('form').addEventListener('submit', function(e) {
     }
 });
 </script>
-</body>
-</html>
+@stop
 

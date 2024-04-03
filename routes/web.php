@@ -28,8 +28,7 @@ Route::get(
 )->name('villes');
 
 
-Route::get(
-    '/ville/{id}', 'App\Http\Controllers\PagesVilleController@ville')->name('ville');
+Route::get('/ville/{id}', 'App\Http\Controllers\PagesVilleController@ville')->name('ville');
 
 Route::get('/parking/{id}', 'App\Http\Controllers\PagesVilleController@parking')->name('parking');
 
@@ -56,3 +55,11 @@ Route::post('/saveNoeud', 'App\Http\Controllers\PagesNoeudLoraController@saveNoe
 // Route::get('/noeud_loras', 'PagesNoeudLoraController@edit');
 
 Route::get('/accueil','App\Http\Controllers\PagesAccueilController@accueil')->name('accueil');
+
+
+Route::get('/connexion','App\Http\Controllers\Auth\LoginController@connexion')->name('connexion') ;
+
+Auth::routes();
+
+
+Route::middleware(['auth', 'role:gestionnaire_place_parking'])->get('pages/apropos', function () {})->name('apropos');

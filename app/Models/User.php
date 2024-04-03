@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -42,4 +43,22 @@ class User extends \TCG\Voyager\Models\User
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // public function hasRole($role)
+    // {
+    //     return $this->roles()->where('name', $role)->exists();
+    // }
+
+    // public function roles()
+    // {
+    //     return $this->belongsToMany(Role::class, 'user_roles');
+    // }
+
+
+    // public function Role()
+    // {
+    //     return $this->belongsTo(Role::class, 'role_id');
+    // }
 }
+   
+

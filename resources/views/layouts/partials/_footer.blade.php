@@ -1,5 +1,5 @@
-<table id="footer" style="width:100%; background-color:#acacb2;">
-    <tr>
-        <td>Footer</td>
-    </tr>
-</table>
+<div id="footer" class="fixed-bottom ms-3">
+    <div id="row">
+        <p>Made by Laravel</p>
+    </div>
+</div>

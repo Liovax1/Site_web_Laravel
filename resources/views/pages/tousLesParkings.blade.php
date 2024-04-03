@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-
-    <title>Tous les Parkings</title>
-</head>
-
-<body>
+@extends('layouts.default')
+@section('content')
     <br>
     <h1 class="text-center">Parkings</h1><br>
 
@@ -62,50 +49,7 @@
             });
         </script>
 
-</body>
-
-</html>
 
 
-<!-- Formulaires pour les parkings
-    <form method="post" action="/save" class="container mb-5">
-    @csrf
-    @foreach( $parkings as $parking)
-        <h2>{!! $parking->nom_parking !!}</h2>
-        <input type="hidden" name="id_{!! $parking->id !!}" value="{!! $parking->id !!}">
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="latitude_{!! $parking->id !!}">Latitude:</label>
-                <input type="text" id="latitude_{!! $parking->id !!}" name="latitude_{!! $parking->id !!}" value="{!! $parking->latitude !!}" class="form-control">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="longitude_{!! $parking->id !!}">Longitude:</label>
-                <input type="text" id="longitude_{!! $parking->id !!}" name="longitude_{!! $parking->id !!}" value="{!! $parking->longitude !!}" class="form-control">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="nombre_place_dispo_{!! $parking->id !!}">Nombre de places disponibles:</label>
-                <input type="text" id="nombre_place_dispo_{!! $parking->id !!}" name="nombre_place_dispo_{!! $parking->id !!}" value="{!! $parking->nombre_place_dispo !!}" class="form-control">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="nombre_place_total_{!! $parking->id !!}">Nombre total de places:</label>
-                <input type="text" id="nombre_place_total_{!! $parking->id !!}" name="nombre_place_total_{!! $parking->id !!}" value="{!! $parking->nombre_place_total !!}" class="form-control">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="ville_{!! $parking->id !!}">Ville:</label>
-            <select id="ville_{!! $parking->id !!}" name="ville_{!! $parking->id !!}" class="form-control">
-                @foreach( $villes as $ville)
-                    <option value="{!! $ville->id !!}" @if($ville->id == $parking->ville_id) selected @endif>{!! $ville->nom !!}</option>
-                @endforeach
-            </select>
-        </div><br>
-    @endforeach
 
-        
-        <div class="text-right mt-5">
-            <button type="submit" class="btn btn-primary mr-2">Sauvegarder</button>
-            <button type="reset" class="btn btn-secondary">Annuler</button>
-        </div>
-    </form> -->
+@stop

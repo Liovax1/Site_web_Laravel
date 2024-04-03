@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-
-    <title>Noeud Lora : {!! $noeudLoraFind->nom_noeud !!}</title>
-</head>
-
-<body>
+@extends('layouts.default')
+@section('content')
     <br>
     <h1 class="text-center">Noeud Lora</h1>
 
@@ -78,6 +65,4 @@
             }
         });
     </script>
-</body>
-
-</html>
+@stop

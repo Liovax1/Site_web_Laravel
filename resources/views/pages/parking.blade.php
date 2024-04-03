@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-
-    <title>Parking : {!! $parking->nom_parking !!}</title>
-</head>
-
-<body>
+@extends('layouts.default')
+@section('content')
     <br>
     <h1 class="text-center">Parking</h1><br>
 
@@ -69,7 +56,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-
-</body>
-
-</html>
+@stop
