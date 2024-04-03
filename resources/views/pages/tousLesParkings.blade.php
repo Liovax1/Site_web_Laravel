@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Parkings</title>
+    <title>Tous les Parkings</title>
 </head>
 
 <body>
@@ -39,10 +39,8 @@
                     <td class="text-center">{!! $parking->longitude !!}</td>
                     <td class="text-center">{!! $parking->nombre_place_dispo !!}</td>
                     <td class="text-center">{!! $parking->nombre_place_total !!}</td>
-                    <td class="text-center"><button type="button" class="btn btn-primary mr-2">Éditer</button></td>
+                    <td class="text-center"><button type="button" class="btn btn-primary mr-2" data-id="{!! $parking->id !!}">Éditer</button></td>
                     <td class="text-center"><button type="button" class="btn btn-danger">supprimer</button></td>
-                    <!-- <a href="/edit/{!! $parking->id !!}" class="btn btn-primary mr-3">Éditer</a>
-                            <a href="/delete/{!! $parking->id !!}" class="btn btn-danger">Supprimer</a> -->
                     </td>
                 </tr>
                 @endforeach
@@ -53,6 +51,16 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+    <script>
+            $(document).ready(function() {
+                $('.btn-primary').click(function() {
+                    var parkingId = $(this).data('id');
+                    window.location.href = '/parking/' + parkingId;
+                });
+            });
+        </script>
 
 </body>
 

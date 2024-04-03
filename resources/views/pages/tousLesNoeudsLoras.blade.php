@@ -16,45 +16,55 @@
 <body>
 
 
-<h1 class="text-center">Noeuds Loras</h1><br>
+    <h1 class="text-center">Noeuds Loras</h1><br>
 
-<!-- Tableau pour les noeud_loras -->
-<div class="container mb-5">
-    <table class="table">
-        <thead>
-            <tr>
-                <th class="text-center">Nom du Noeud</th>
-                <th class="text-center">Type de noeud</th>
-                <th class="text-center">Dev EUI</th>
-                <th class="text-center">Nom du Parking</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($noeud_loras as $noeud_lora)
+    <!-- Tableau pour les noeud_loras -->
+    <div class="container mb-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">Nom du Noeud</th>
+                    <th class="text-center">Type de noeud</th>
+                    <th class="text-center">Dev EUI</th>
+                    <th class="text-center">Nom du Parking</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($noeud_loras as $noeud_lora)
                 <tr>
                     <td class="text-center">{!! $noeud_lora->nom_noeud !!}</td>
                     <td class="text-center">{!! $noeud_lora->type_noeud !!}</td>
                     <td class="text-center">{!! $noeud_lora->dev_eui !!}</td>
                     <td class="text-center">
                         @foreach($parkings as $parking)
-                            @if($noeud_lora->parking_id == $parking->id)
-                                {!! $parking->nom_parking !!}
-                            @endif
+                        @if($noeud_lora->parking_id == $parking->id)
+                        {!! $parking->nom_parking !!}
+                        @endif
                         @endforeach
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-primary mr-4">Éditer</button>
+                        <button type="button" class="btn btn-primary mr-4" data-id="{!! $noeud_lora->id !!}">Éditer</button>
                         <button type="button" class="btn btn-danger">Supprimer</button>
                     </td>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.btn-primary').click(function() {
+                var noeud_loraId = $(this).data('id');
+                window.location.href = '/noeud_lora/' + noeud_loraId;
+            });
+        });
+    </script>
 
 
 
@@ -83,6 +93,7 @@
             <label for="dev_eui_{!! $noeud_lora->id !!}">Dev EUI:</label>
             <input type="text" id="dev_eui_{!! $noeud_lora->id !!}" name="dev_eui_{!! $noeud_lora->id !!}" value="{!! $noeud_lora->dev_eui !!}" class="form-control">
         </div>
+        
         <div class="form-group col-md-6">
     <label for="parking_id_{!! $noeud_lora->id !!}">Nom du Parking:</label>
     <select id="parking_id_{!! $noeud_lora->id !!}" name="parking_id_{!! $noeud_lora->id !!}" class="form-control">
@@ -92,6 +103,9 @@
             </option>
         @endforeach
     </select>
+
+    
+
 </div><br>
         </div><br>
 

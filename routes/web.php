@@ -22,27 +22,32 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('/villes',
-    'App\Http\Controllers\PagesVilleController@villes')->name('villes');
+Route::get(
+    '/villes',
+    'App\Http\Controllers\PagesVilleController@villes'
+)->name('villes');
 
 
 Route::get(
-        '/ville/{id}',
-        'App\Http\Controllers\PagesVilleController@ville')->name('ville');
+    '/ville/{id}', 'App\Http\Controllers\PagesVilleController@ville')->name('ville');
+
+Route::get('/parking/{id}', 'App\Http\Controllers\PagesVilleController@parking')->name('parking');
+
+Route::get('/tousLesParkings','App\Http\Controllers\PagesVilleController@tousLesParkings')->name('tousLesParkings');
+
+// Route::get('/parkings/{id}',
+// 'App\Http\Controllers\PagesVilleController@parkings')->name('parkings');
+
+Route::get('/tousLesNoeudsLoras','App\Http\Controllers\PagesNoeudLoraController@all')->name('tousLesNoeudsLoras');
 
 
-Route::get('/parkings/{id}',
-'App\Http\Controllers\PagesVilleController@parkings')->name('parkings');
+Route::get('/noeud_lora/{id}','App\Http\Controllers\PagesNoeudLoraController@noeudLora')->name('noeud_lora');
 
-Route::get('/noeud_loras-all',
-'App\Http\Controllers\PagesNoeudLoraController@all')->name('noeud_loras-all') ;
-
-
-Route::get('/tousLesParkings',
-'App\Http\Controllers\PagesVilleController@tousLesParkings')->name('tousLesParkings');
 
 
 Route::post('/saveVille', 'App\Http\Controllers\PagesVilleController@saveVille');
+
+Route::post('/saveParking', 'App\Http\Controllers\PagesVilleController@saveParking');
 
 Route::post('/save', 'App\Http\Controllers\PagesVilleController@save');
 
@@ -50,5 +55,4 @@ Route::post('/saveNoeud', 'App\Http\Controllers\PagesNoeudLoraController@saveNoe
 
 // Route::get('/noeud_loras', 'PagesNoeudLoraController@edit');
 
-Route::get('/accueil',
-'App\Http\Controllers\PagesAccueilController@accueil')->name('accueil') ;
+Route::get('/accueil','App\Http\Controllers\PagesAccueilController@accueil')->name('accueil');

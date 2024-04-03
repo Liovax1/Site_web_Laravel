@@ -15,11 +15,26 @@ class PagesNoeudLoraController extends Controller
         $noeud_loras = $noeud_lora->all();
         $parkings = Parking::all(); 
         $nomsChamps = Schema::getColumnListing($noeud_lora->getTable());
-        return view ('pages/noeud_loras')
+        return view ('pages/tousLesNoeudsLoras')
             ->with('noeud_loras', $noeud_loras)
             ->with('parkings', $parkings) 
             ->with('nomsChamps', $nomsChamps);  
     }
+
+
+
+    public function noeudLora($id){
+        $noeudLora = new NoeudLora();
+        $noeudLoraFind = $noeudLora->find($id);
+        $nomsChamps = Schema::getColumnListing($noeudLora->getTable());
+        $parkings = Parking::all(); // Ajout de cette ligne
+        return view('pages/noeud_lora')
+            ->with('noeudLoraFind', $noeudLoraFind)
+            ->with('nomsChamps', $nomsChamps)
+            ->with('parkings', $parkings); // Ajout de cette ligne
+    }
+    
+    
 
 
 
