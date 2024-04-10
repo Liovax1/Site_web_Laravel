@@ -3,7 +3,7 @@
 <br>
 <h1 class="text-center">Nouveau Noeud Lora</h1>
 
-<form method="post" action="/saveNoeud" class="container mb-5">
+<form method="post" action="/ajoutNoeud" class="container mb-5">
     @csrf
 
     <div class="form-group">

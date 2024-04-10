@@ -1,12 +1,12 @@
 @extends('layouts.default')
 @section('content')
-    <h1 class="text-center">Ville : {!! $villeFind->nom !!}</h1>
+    <br><h1 class="text-center">Ville : {!! $villeFind->nom !!}</h1>
 
     <!-- Formulaire pour la ville -->
     <form method="post" action="/saveVille" class="container mb-5">
     @csrf
     <input type="hidden" id="id" name="id" value="{!! $villeFind->id !!}">
-        <div class="form-group">
+        <br><div class="form-group">
             <label for="nom">Nom:</label>
             <input type="text" id="nom" name="nom" value="{!! $villeFind->nom !!}" class="form-control">
         </div>

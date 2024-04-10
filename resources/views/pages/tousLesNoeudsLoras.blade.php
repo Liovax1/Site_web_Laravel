@@ -1,7 +1,6 @@
 @extends('layouts.default')
 @section('content')
 
-
     <h1 class="text-center">Noeuds Loras</h1><br>
 
     <!-- Tableau pour les noeud_loras -->
@@ -30,7 +29,11 @@
                     </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-primary mr-4" data-id="{!! $noeud_lora->id !!}">Éditer</button>
-                        <button type="button" class="btn btn-danger">Supprimer</button>
+                        <form action="/noeud_lora/{!! $noeud_lora->id !!}/delete" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
@@ -40,8 +43,6 @@
             <a href="/formAjouterNoeud" class="btn btn-success">Ajouter</a>
         </div>
     </div>
-
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -54,12 +55,6 @@
             });
         });
     </script>
-
-
-
-
-   
-
 
     <script>
         document.querySelector('form').addEventListener('submit', function(e) {

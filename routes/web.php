@@ -56,6 +56,12 @@ Route::post('/save', 'App\Http\Controllers\PagesVilleController@save');
 
 Route::post('/saveNoeud', 'App\Http\Controllers\PagesNoeudLoraController@saveNoeud');
 
+Route::post('/ajoutNoeud', 'App\Http\Controllers\PagesNoeudLoraController@ajoutNoeud');
+
+Route::delete('/noeud_lora/{id}/delete', 'App\Http\Controllers\PagesNoeudLoraController@delete');
+
+
+
 
 
 Route::get('/accueil','App\Http\Controllers\PagesAccueilController@accueil')->name('accueil');
