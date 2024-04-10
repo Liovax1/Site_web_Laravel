@@ -4,9 +4,14 @@
     <h1 class="text-center">Noeud Lora</h1>
 
     <!-- Formulaire pour le noeud_lora -->
-    <form method="post" action="/" class="container mb-5">
+    <form method="post" action="/saveNoeud" class="container mb-5">
         @csrf
-        <h2>{!! $noeudLoraFind->nom_noeud !!}</h2>
+        <!-- <h2>{!! $noeudLoraFind->nom_noeud !!}</h2> -->
+
+        <div class="form-group">
+            <label for="nom_noeud_{!! $noeudLoraFind->id !!}">Nom du Noeud:</label>
+            <input type="text" id="nom_noeud_{!! $noeudLoraFind->id !!}" name="nom_noeud_{!! $noeudLoraFind->id !!}" value="{!! $noeudLoraFind->nom_noeud !!}" class="form-control">
+        </div>
 
         <div class="form-group">
             <label for="type_noeud">Type de noeud:</label>
@@ -23,24 +28,24 @@
             <label for="dev_eui">Dev EUI:</label>
             <input type="text" id="dev_eui" name="dev_eui" value="{!! $noeudLoraFind->dev_eui !!}" class="form-control">
         </div>
+
+
         <div class="form-group">
-    <label for="parking_id_{!! $noeudLoraFind->id !!}">Nom du Parking:</label>
-    <select id="parking_id_{!! $noeudLoraFind->id !!}" name="parking_id_{!! $noeudLoraFind->id !!}" class="form-control">
-        @foreach($parkings as $parking)
-            <option value="{!! $parking->id !!}" @if($noeudLoraFind->parking_id == $parking->id) selected @endif>
-                {!! $parking->nom_parking !!}
-            </option>
-        @endforeach
-    </select>
-</div>
-
-
-
+            <label for="parking_id_{!! $noeudLoraFind->id !!}">Nom du Parking:</label>
+            <select id="parking_id_{!! $noeudLoraFind->id !!}" name="parking_id_{!! $noeudLoraFind->id !!}" class="form-control">
+                @foreach($parkings as $parking)
+                    <option value="{!! $parking->id !!}" @if($noeudLoraFind->parking_id == $parking->id) selected @endif>
+                        {!! $parking->nom_parking !!}
+                    </option>
+                @endforeach
+            </select>
+        </div>
 
         <!-- Boutons -->
         <div class="text-right mt-5">
             <button type="submit" class="btn btn-primary mr-2">Sauvegarder</button>
             <button type="reset" class="btn btn-secondary">Annuler</button>
+            
         </div>
     </form>
 

@@ -40,27 +40,36 @@ class PagesNoeudLoraController extends Controller
 
     public function saveNoeud(Request $request)
 {
-    foreach ($request->all() as $key => $value) {
-        if (str_starts_with($key, 'id_')) {
-            $id = substr($key, 3);
-            $noeud_lora = NoeudLora::find($id);
-            if ($noeud_lora) {
-                $noeud_lora->nom_noeud = $request->input('nom_noeud_'.$id);
-                $noeud_lora->type_noeud = $request->input('type_noeud_'.$id);
-                $noeud_lora->dev_eui = $request->input('dev_eui_'.$id);
-                $noeud_lora->parking_id = $request->input('parking_id_'.$id); 
-                $noeud_lora->save();
-            }
-        }
+    $noeud_loras = NoeudLora::all();
+    foreach ($noeud_loras as $noeud_lora) {
+        $id = $noeud_lora->id;
+        $noeud_lora->nom_noeud = $request->input('nom_noeud_'.$id) ?? $noeud_lora->nom_noeud;
+        $noeud_lora->type_noeud = $request->input('type_noeud') ?? $noeud_lora->type_noeud;
+        $noeud_lora->dev_eui = $request->input('dev_eui_'.$id) ?? $noeud_lora->dev_eui;
+        $noeud_lora->parking_id = $request->input('parking_id_'.$id) ?? $noeud_lora->parking_id; 
+        $noeud_lora->save();
     }
-    return back();
+    return redirect()->route('tousLesNoeudsLoras');
 }
+
+    
 
 public function edit() {
     $noeud_loras = NoeudLora::all();
     $parkings = Parking::all(); 
     return view('noeud_loras', ['noeud_loras' => $noeud_loras, 'parkings' => $parkings]);
-}
+
 
 }
+
+public function createNoeud()
+{
+    $parkings = Parking::all(); 
+    return view('pages/formAjouterNoeud' ,  ['parkings' => $parkings]);
+}
+
+
+}
+
+
 
