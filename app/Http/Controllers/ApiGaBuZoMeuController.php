@@ -53,12 +53,3 @@ class ApiGaBuZoMeuController extends Controller
             } 
     
 }
-
-
-
-
-
-
-
-
-

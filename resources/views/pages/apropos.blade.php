@@ -1,7 +1,12 @@
 @extends('layouts.default')
 @section('content')
 
-<h1>Qui sommes-nous</h1>
-<p>Bonjour</p>
+<head>
+    <title>
+        A Propos
+    </title>
+</head>
+<br>
+<h1 class="text-center">Qui sommes-nous</h1>
 
 @stop

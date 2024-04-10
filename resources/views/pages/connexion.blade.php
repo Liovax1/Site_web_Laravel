@@ -1,6 +1,12 @@
     @extends('layouts.default')
     @section('content')
 
+    <head>
+    <title>
+        Connexion
+    </title>
+</head>
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
         <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
@@ -19,6 +25,5 @@
                     connecter</button>
             </form>
         </div>
-
 
     @stop

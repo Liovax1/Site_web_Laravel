@@ -1,5 +1,12 @@
 @extends('layouts.default')
 @section('content')
+
+<head>
+    <title>
+        Noeud
+    </title>
+</head>
+
     <br>
     <h1 class="text-center">Noeud Lora</h1>
 

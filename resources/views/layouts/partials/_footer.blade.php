@@ -1,5 +1,5 @@
-<div id="footer" class="fixed-bottom ms-3">
+<div id="footer" class="fixed-bottom ml-3">
     <div id="row">
-        <p>Made by Laravel</p>
+        <p>&copy 2024 &middot GABUZOMEU - BTS SNIR 2024</p>
     </div>
 </div>

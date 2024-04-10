@@ -63,7 +63,7 @@ Route::get('/connexion','App\Http\Controllers\Auth\LoginController@connexion')->
 Auth::routes();
 
 
-Route::middleware(['auth', 'role:gestionnaire_place_parking'])->get('pages/apropos', function () {})->name('apropos');
+// Route::middleware(['auth', 'role:gestionnaire_place_parking'])->get('pages/apropos', function () {})->name('apropos');
 // Accès uniquement pour les utilisateurs connectés
 // Route::middleware('auth')->group(function () {
 //     // Votre route ici
