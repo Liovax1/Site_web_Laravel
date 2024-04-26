@@ -1,12 +1,6 @@
 @extends('layouts.default')
 @section('content')
 
-<head>
-    <title>
-        Gestion Parkings
-    </title>
-</head>
-
     <br>
     <h1 class="text-center">Parkings</h1><br>
 

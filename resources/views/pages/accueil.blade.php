@@ -1,20 +1,11 @@
 @extends('layouts.default')
 @section('content')
 
-<head>
-    <title>
-        Accueil
-    </title>
-</head>
-
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
-
 
 <br>
 <div>
     <h1 class="text-center">Accueil</h1>
-    <img src="https://drive.google.com/file/d/1b9DGqnrsfA2kK949FWw9TcpzCGdPvgZq/view?usp=sharing">
 </div>
 
 

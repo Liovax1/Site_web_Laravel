@@ -57,8 +57,9 @@ Route::post('/saveNoeud', 'App\Http\Controllers\PagesNoeudLoraController@saveNoe
 
 Route::get('/accueil','App\Http\Controllers\PagesAccueilController@accueil')->name('accueil');
 
-
 Route::get('/connexion','App\Http\Controllers\Auth\LoginController@connexion')->name('connexion') ;
+
+Route::get('/listeDesParkings','App\Http\Controllers\PagesListeParkingsController@listeDesParkings')->name('listeDesParkings');
 
 Auth::routes();
 

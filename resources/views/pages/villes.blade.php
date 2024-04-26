@@ -1,12 +1,6 @@
 @extends('layouts.default')
 @section('content')
 
-<head>
-    <title>
-        Gestion Villes
-    </title>
-</head>
-
 <br>
 <h1 class="text-center">Villes :</h1><br>
 

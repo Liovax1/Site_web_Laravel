@@ -1,12 +1,6 @@
 @extends('layouts.default')
 @section('content')
 
-<head>
-    <title>
-        Ville
-    </title>
-</head>
-
     <h1 class="text-center">Ville : {!! $villeFind->nom !!}</h1>
 
     <!-- Formulaire pour la ville -->
