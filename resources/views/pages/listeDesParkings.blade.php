@@ -7,24 +7,25 @@
 </div>
 <br>
 
-<div class="col-md-6">
-    <div class="card shadow h-100 mb-4">
-        <div class="card-body">
-            <a href="/parking/Clemenceau">
-                <h5 class="name">Allées de la République</h5>
-            </a>
-            <p><small>Capacité : 200 places</small></p>
-            <a href="/parking/Clemenceau" class="btn btn-primary">
-                <h2 class="text-center text-white">
-                    50 places libres
-                </h2>
-            </a>
-            
-            <hr>
-            
+<div class="container-fluid">
+    <div class="row">
+        @foreach ($parkings as $parking)
+        <div class="col-md-4 mb-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <h4>{{ $parking->nom_parking }}</h4>
+                    <p><small><strong>Capacité : {{ $parking->nombre_place_total }} places</strong></small></p>
+                    <a class="btn btn-primary">
+                        <h2 class="btn btn-primary text-center text-white">
+                            {{ $parking->nombre_place_dispo }} places libres
+                        </h2>
+                    </a>
+                    <hr>
+                </div>
+            </div>
         </div>
+        @endforeach
     </div>
 </div>
-
 
 @stop
