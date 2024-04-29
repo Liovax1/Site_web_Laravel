@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Ville;
 use App\Models\Parking;
-use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth;
 use Schema;
 
 class PagesVilleController extends Controller
@@ -14,13 +14,13 @@ class PagesVilleController extends Controller
     public function villes()
     {
 
-        if (!auth()->user()->hasRole('admin') && !auth()->user()->hasRole('gestionnaire_parking')) {
-            return redirect()->route('accueil')->with('popupScript', "alert('Cette page n'est pas pour vous ! Connectez-vous ou revenez en arrière');");
-        }
-
         $ville = new Ville();
         $villes = $ville->all();
         $nomsChamps = Schema::getColumnListing($ville->getTable());
+
+        if (!Auth::check() || !Auth::user()->hasRole('admin') && !Auth::user()->hasRole('gestionnaire_parking')) {
+            return redirect()->route('accueil');
+        }
         
         return view('pages/villes')
             ->with('villes', $villes)
