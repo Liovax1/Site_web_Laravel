@@ -33,6 +33,11 @@ class PagesVilleController extends Controller
         $ville = new Ville();
         $villeFind = $ville->find($id);
         $nomsChamps = Schema::getColumnListing($ville->getTable());
+
+        if (!Auth::check() || !Auth::user()->hasRole('admin') && !Auth::user()->hasRole('gestionnaire_parking')) {
+            return redirect()->route('accueil');
+        }
+        
         return view('pages/ville')
             ->with('villeFind', $villeFind)
             ->with('nomsChamps', $nomsChamps);
