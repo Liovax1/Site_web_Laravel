@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
 <div>
-<h1>Accueidddl</h1>
+<h1>Accueil</h1>
 </div>
 
 
