@@ -1,9 +1,18 @@
     @extends('layouts.default')
     @section('content')
 
+<br>
+<div>
+    <h1 class="text-center">Connexion</h1>
+</div>
+<br>
+<p class="text-center">Connectez-vous !</p>
+<br><br>
+
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-        <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="container d-flex justify-content-center" style="min-height: 80vh;">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">

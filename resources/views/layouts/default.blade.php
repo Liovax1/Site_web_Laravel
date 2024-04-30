@@ -12,7 +12,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#ff8020">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" href="{{ asset('storage/' .Voyager::setting('site.logo2')) }}"width="50" height="50">
+    <link rel="icon" href="{{ asset('storage/' .Voyager::setting('site.logo2')) }}">
     
 
 <!-- JavaScript Bootstrap bundle (incluant Popper) -->
