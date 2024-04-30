@@ -36,13 +36,18 @@
             </option>
             @endforeach
         </select>
-        </div>
+        </div><br>
 
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            Veuillez remplir tous les champs du formulaire.
+        </div>
+        @endif
 
 
         <div class="text-right mt-5">
-            <button type="submit" class="btn btn-primary mr-2">Sauvegarder</button>
-            <button type="reset" class="btn btn-secondary">Annuler</button>
+            <button type="submit" class="btn btn-primary mr-4">Sauvegarder</button>
+            <a href="/tousLesNoeudsLoras" class="btn btn-secondary mr">Annuler</a>
         </div>
 </form>
 

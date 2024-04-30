@@ -42,6 +42,10 @@ class PagesNoeudLoraController extends Controller
 
     public function saveNoeud(Request $request)
     {
+        $validatedData = $request->validate([
+            'nom_noeud' => 'required',
+            'dev_eui' => 'required',
+        ]);
         $noeud_loras = NoeudLora::all();
         foreach ($noeud_loras as $noeud_lora) {
             $id = $noeud_lora->id;
@@ -73,6 +77,10 @@ class PagesNoeudLoraController extends Controller
 
     public function ajoutNoeud(Request $request)
 {
+    $validatedData = $request->validate([
+        'nom_noeud' => 'required',
+        'dev_eui' => 'required',
+    ]);
     $noeud_lora = new NoeudLora;
     $noeud_lora->nom_noeud = $request->input('nom_noeud');
     $noeud_lora->type_noeud = $request->input('type_noeud');

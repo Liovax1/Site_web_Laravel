@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
 
-    <h1 class="text-center">Noeuds Loras</h1><br>
+    <br><h1 class="text-center">Noeuds Loras</h1><br>
 
     <!-- Tableau pour les noeud_loras -->
     <div class="container mb-5">
@@ -53,24 +53,6 @@
                 var noeud_loraId = $(this).data('id');
                 window.location.href = '/noeud_lora/' + noeud_loraId;
             });
-        });
-    </script>
-
-    <script>
-        document.querySelector('form').addEventListener('submit', function(e) {
-            // Parcourir tous les champs du formulaire
-            var inputs = this.querySelectorAll('input[type="text"], select');
-            for (var i = 0; i < inputs.length; i++) {
-                // Vérifier si le champ est vide
-                if (inputs[i].value == '') {
-                    // Empêcher la soumission du formulaire
-                    e.preventDefault();
-                    // Afficher un message d'erreur
-                    alert('Veuillez remplir tous les champs du formulaire.');
-                    // Sortir de la boucle
-                    break;
-                }
-            }
         });
     </script>
 @stop

@@ -6,7 +6,6 @@
 <!-- Formulaire pour le noeud_lora -->
 <form method="post" action="/saveNoeud" class="container mb-5">
     @csrf
-    <!-- <h2>{!! $noeudLoraFind->nom_noeud !!}</h2> -->
 
     <div class="form-group">
         <label for="nom_noeud_{!! $noeudLoraFind->id !!}">Nom du Noeud:</label>
@@ -24,10 +23,7 @@
             @endforeach
         </select>
 
-
     </div>
-
-
 
     <div class="form-group">
         <label for="dev_eui">Dev EUI:</label>
@@ -44,12 +40,18 @@
             </option>
             @endforeach
         </select>
-    </div>
+    </div><br>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            Veuillez remplir tous les champs du formulaire.
+        </div>
+        @endif
 
     <!-- Boutons -->
     <div class="text-right mt-5">
-        <button type="submit" class="btn btn-primary mr-2">Sauvegarder</button>
-        <button type="reset" class="btn btn-secondary">Annuler</button>
+        <button type="submit" class="btn btn-primary mr-3">Sauvegarder</button>
+        <a href="/tousLesNoeudsLoras" class="btn btn-secondary mr">Annuler</a>
 
     </div>
 </form>
@@ -58,21 +60,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<script>
-    document.querySelector('form').addEventListener('submit', function(e) {
-        // Parcourir tous les champs du formulaire
-        var inputs = this.querySelectorAll('input[type="text"], select');
-        for (var i = 0; i < inputs.length; i++) {
-            // Vérifier si le champ est vide
-            if (inputs[i].value == '') {
-                // Empêcher la soumission du formulaire
-                e.preventDefault();
-                // Afficher un message d'erreur
-                alert('Veuillez remplir tous les champs du formulaire.');
-                // Sortir de la boucle
-                break;
-            }
-        }
-    });
-</script>
 @stop

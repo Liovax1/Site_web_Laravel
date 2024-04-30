@@ -14,6 +14,8 @@
                     <th class="text-center">Longitude</th>
                     <th class="text-center">Places disponibles</th>
                     <th class="text-center">Total de places</th>
+                    <th class="text-center"></th>
+
                     
                 </tr>
             </thead>
@@ -26,13 +28,21 @@
                     <td class="text-center">{!! $parking->longitude !!}</td>
                     <td class="text-center">{!! $parking->nombre_place_dispo !!}</td>
                     <td class="text-center">{!! $parking->nombre_place_total !!}</td>
-                    <td class="text-center"><button type="button" class="btn btn-primary mr-2" data-id="{!! $parking->id !!}">Éditer</button></td>
-                    <td class="text-center"><button type="button" class="btn btn-danger">supprimer</button></td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-primary mr-4" data-id="{!! $parking->id !!}">Éditer</button>
+                        <form action="/parking/{!! $parking->id !!}/delete" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        <br><div class="d-flex justify-content-end mr-3">
+            <a href="/formAjouterParking" class="btn btn-success">Ajouter</a>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -48,8 +58,5 @@
                 });
             });
         </script>
-
-
-
 
 @stop

@@ -30,12 +30,13 @@ Route::get(
 
 Route::get('/ville/{id}', 'App\Http\Controllers\PagesVilleController@ville')->name('ville');
 
-Route::get('/parking/{id}', 'App\Http\Controllers\PagesVilleController@parking')->name('parking');
+Route::get('/formAjouterVille','App\Http\Controllers\PagesVilleController@createVille')->name('formAjouterVille');
 
-Route::get('/tousLesParkings','App\Http\Controllers\PagesVilleController@tousLesParkings')->name('tousLesParkings');
+Route::get('/parking/{id}', 'App\Http\Controllers\PagesParkingController@parking')->name('parking');
 
-// Route::get('/parkings/{id}',
-// 'App\Http\Controllers\PagesVilleController@parkings')->name('parkings');
+Route::get('/tousLesParkings','App\Http\Controllers\PagesParkingController@tousLesParkings')->name('tousLesParkings');
+
+Route::get('/formAjouterParking','App\Http\Controllers\PagesParkingController@createParking')->name('formAjouterParking');
 
 Route::get('/tousLesNoeudsLoras','App\Http\Controllers\PagesNoeudLoraController@all')->name('tousLesNoeudsLoras');
 
@@ -50,9 +51,17 @@ Route::get('/formAjouterNoeud','App\Http\Controllers\PagesNoeudLoraController@cr
 
 Route::post('/saveVille', 'App\Http\Controllers\PagesVilleController@saveVille');
 
-Route::post('/saveParking', 'App\Http\Controllers\PagesVilleController@saveParking');
+Route::post('/ajoutVille', 'App\Http\Controllers\PagesVilleController@ajoutVille');
 
-Route::post('/save', 'App\Http\Controllers\PagesVilleController@save');
+Route::delete('/ville/{id}/delete', 'App\Http\Controllers\PagesVilleController@delete');
+
+Route::post('/saveParking', 'App\Http\Controllers\PagesParkingController@saveParking');
+
+Route::post('/ajoutParking', 'App\Http\Controllers\PagesParkingController@ajoutParking');
+
+Route::delete('/parking/{id}/delete', 'App\Http\Controllers\PagesParkingController@delete');
+
+Route::post('/save', 'App\Http\Controllers\PagesParkingController@save');
 
 Route::post('/saveNoeud', 'App\Http\Controllers\PagesNoeudLoraController@saveNoeud');
 
