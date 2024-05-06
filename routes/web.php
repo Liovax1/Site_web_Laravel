@@ -63,7 +63,7 @@ Route::delete('/parking/{id}/delete', 'App\Http\Controllers\PagesParkingControll
 
 Route::post('/save', 'App\Http\Controllers\PagesParkingController@save');
 
-Route::post('/saveNoeud', 'App\Http\Controllers\PagesNoeudLoraController@saveNoeud');
+Route::post('/saveNoeud/{id}', 'App\Http\Controllers\PagesNoeudLoraController@saveNoeud');
 
 Route::post('/ajoutNoeud', 'App\Http\Controllers\PagesNoeudLoraController@ajoutNoeud');
 

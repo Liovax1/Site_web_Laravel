@@ -7,10 +7,16 @@
 <form method="post" action="/saveNoeud" class="container mb-5">
     @csrf
 
+    <input type="hidden" id="id" name="id" value="{!! $noeudLoraFind->id !!}">
     <div class="form-group">
+        <label for="nom_noeud">Nom du Noeud :</label>
+        <input type="text" id="nom_noeud" name="nom_noeud" value="{!! $noeudLoraFind->nom_noeud !!}" class="form-control">
+    </div>
+
+    <!-- <div class="form-group">
         <label for="nom_noeud_{!! $noeudLoraFind->id !!}">Nom du Noeud:</label>
         <input type="text" id="nom_noeud_{!! $noeudLoraFind->id !!}" name="nom_noeud_{!! $noeudLoraFind->id !!}" value="{!! $noeudLoraFind->nom_noeud !!}" class="form-control">
-    </div>
+    </div> -->
 
 
     <div class="form-group">
@@ -25,10 +31,16 @@
 
     </div>
 
+
     <div class="form-group">
-        <label for="dev_eui">Dev EUI:</label>
-        <input type="string" id="dev_eui_{{ $noeudLoraFind->id }}" name="dev_eui_{{ $noeudLoraFind->id }}" value="{!! $noeudLoraFind->dev_eui !!}" class="form-control">
+        <label for="dev_eui">Dev EUI :</label>
+        <input type="text" id="dev_eui" name="dev_eui" value="{!! $noeudLoraFind->dev_eui !!}" class="form-control">
     </div>
+
+    <!-- <div class="form-group">
+        <label for="dev_eui">Dev EUI:</label>
+        <input type="text" id="dev_eui_{{ $noeudLoraFind->id }}" name="dev_eui_{{ $noeudLoraFind->id }}" value="{!! $noeudLoraFind->dev_eui !!}" class="form-control">
+    </div> -->
 
 
     <div class="form-group">
