@@ -4,7 +4,7 @@
 <h1 class="text-center">Noeud Lora</h1>
 
 <!-- Formulaire pour le noeud_lora -->
-<form method="post" action="/saveNoeud" class="container mb-5">
+<form method="post" action="/saveNoeud/{!! $noeudLoraFind->id !!}" class="container mb-5">
     @csrf
 
     <input type="hidden" id="id" name="id" value="{!! $noeudLoraFind->id !!}">

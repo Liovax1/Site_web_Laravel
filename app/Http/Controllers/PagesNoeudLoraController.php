@@ -40,7 +40,7 @@ class PagesNoeudLoraController extends Controller
 
 
 
-    public function saveNoeud(Request $request, $id)
+    public function saveNoeud($id, Request $request)
     {
         $id = $request->input('id');
         
