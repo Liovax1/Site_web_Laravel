@@ -10,7 +10,7 @@
 
 
 <div class="container mt-5">
-    <div class="row">
+    <div class="row justify">
         <div class="col">
             <div id="mapid" style="height: 400px; width: 700px;"></div>
         </div>

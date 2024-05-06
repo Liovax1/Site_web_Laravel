@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
     <div class="container-fluid">
             <img src="{{ asset('storage/' .Voyager::setting('site.logo')) }}" title="Accueil" alt="Logo" width="55" height="50">
             <a class="navbar-brand custom-navbar-brand" href="{{ route('accueil') }}">Accueil</a>
