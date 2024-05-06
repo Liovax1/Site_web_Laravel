@@ -12,6 +12,7 @@
                     <th class="text-center">Type de noeud</th>
                     <th class="text-center">Dev EUI</th>
                     <th class="text-center">Nom du Parking</th>
+                    <th class="text-center"></th>
                 </tr>
             </thead>
             <tbody>
