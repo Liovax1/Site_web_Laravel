@@ -29,7 +29,7 @@
                     <td class="text-center">{!! $parking->nombre_place_dispo !!}</td>
                     <td class="text-center">{!! $parking->nombre_place_total !!}</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-primary mr-4" data-id="{!! $parking->id !!}">Éditer</button>
+                        <button type="button" class="btn btn-primary mr-2" data-id="{!! $parking->id !!}">Éditer</button>
                         <form action="/parking/{!! $parking->id !!}/delete" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')

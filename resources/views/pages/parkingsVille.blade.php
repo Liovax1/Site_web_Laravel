@@ -38,7 +38,7 @@
                 @endforeach
             </tbody>
         </table>
-        <br><div class="d-flex justify-content-end mr-4">
+        <br><div class="d-flex justify-content-end mr-5">
             <a href="/formAjouterParking" class="btn btn-success">Ajouter</a>
         </div>
     </div>
