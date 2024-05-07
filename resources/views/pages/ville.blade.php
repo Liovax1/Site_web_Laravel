@@ -40,7 +40,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
-    <script>
+    <!-- <script>
 document.querySelector('form').addEventListener('submit', function(e) {
     // Parcourir tous les champs du formulaire
     var inputs = this.querySelectorAll('input[type="text"], select');
@@ -56,6 +56,6 @@ document.querySelector('form').addEventListener('submit', function(e) {
         }
     }
 });
-</script>
+</script> -->
 @stop
 

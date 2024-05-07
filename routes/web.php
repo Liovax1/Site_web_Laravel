@@ -45,6 +45,9 @@ Route::get('/noeud_lora/{id}','App\Http\Controllers\PagesNoeudLoraController@noe
 
 Route::get('/formAjouterNoeud','App\Http\Controllers\PagesNoeudLoraController@createNoeud')->name('formAjouterNoeud');
 
+Route::get('/parkingsVille/{id}', 'App\Http\Controllers\PagesParkingController@parkingsVille')->name('parkingsVille');
+
+
 
 
 
@@ -68,6 +71,9 @@ Route::post('/saveNoeud/{id}', 'App\Http\Controllers\PagesNoeudLoraController@sa
 Route::post('/ajoutNoeud', 'App\Http\Controllers\PagesNoeudLoraController@ajoutNoeud');
 
 Route::delete('/noeud_lora/{id}/delete', 'App\Http\Controllers\PagesNoeudLoraController@delete');
+
+
+
 
 
 

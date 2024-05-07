@@ -20,8 +20,8 @@
 
 
     <div class="form-group">
-        <label for="type_noeud_">Type de noeud:</label>
-        <select id="type_noeud_{{ $noeudLoraFind->id }}" name="type_noeud_{{ $noeudLoraFind->id }}" class="form-control">
+        <label for="type_noeud">Type de noeud:</label>
+        <select id="type_noeud" name="type_noeud" class="form-control">
             @foreach(['Input', 'Output', 'Afficheur'] as $type)
             <option value="{{ $type }}" @if($noeudLoraFind->type_noeud == $type) selected @endif>
                 {{ $type }}

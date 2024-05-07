@@ -71,6 +71,7 @@ class PagesParkingController extends Controller
 
     public function saveParking(Request $request)
     {
+        
         $validatedData = $request->validate([
             'nom_parking' => 'required',
             'latitude' => 'required',
@@ -99,7 +100,8 @@ class PagesParkingController extends Controller
             return redirect()->back()->withErrors(['error' => 'Parking not found']);
         }
     
-        return redirect()->route('tousLesParkings');
+        return redirect()->route('parkingsVille', ['id' => $ville->id]);
+
     }
 
 
@@ -108,7 +110,6 @@ class PagesParkingController extends Controller
         $villes = Ville::all();
         return view('pages/formAjouterParking',  ['villes' => $villes]);
     }
-
 
     public function ajoutParking(Request $request)
     {
@@ -140,5 +141,17 @@ class PagesParkingController extends Controller
 
     return redirect('/tousLesParkings');
 }
+
+
+
+public function parkingsVille($id)
+{
+    $ville = Ville::find($id);
+    $parkings = Parking::where('ville_id', $id)->get();
+    return view('pages/parkingsVille', ['parkings' => $parkings, 'ville' => $ville]);
+}
+
+
+
 
 }
