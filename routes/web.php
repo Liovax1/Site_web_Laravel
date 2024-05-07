@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,30 @@ Route::get('/connexion','App\Http\Controllers\Auth\LoginController@connexion')->
 
 Route::get('/listeDesParkings','App\Http\Controllers\PagesListeParkingsController@listeDesParkings')->name('listeDesParkings');
 
+
+// Liste des utilisateurs
+Route::get('/listeDesUtilisateurs', [UserController::class, 'index'])->name('users.index');
+
+// Afficher le formulaire d'ajout d'utilisateur
+Route::get('/listeDesUtilisateurs/ajoutUtilisateur', [UserController::class, 'create'])->name('users.create');
+
+// Enregistrer un nouvel utilisateur
+Route::post('/listeDesUtilisateurs', [UserController::class, 'store'])->name('users.store');
+
+// Afficher le formulaire de modification d'utilisateur
+Route::get('/listeDesUtilisateurs/{user}/editionUtilisateur', [UserController::class, 'edit'])->name('users.edit');
+
+// Mettre à jour un utilisateur
+Route::put('/listeDesUtilisateurs/{user}', [UserController::class, 'update'])->name('users.update');
+
+// Supprimer un utilisateur
+Route::delete('/listeDesUtilisateurs/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+
+
+
+
+
 Auth::routes();
 
 
@@ -87,3 +112,6 @@ Auth::routes();
 // Route::middleware(['auth', 'role:gestionnaire_place_parking'])->get('pages/apropos', function () {
 //     // Votre logique pour la route '/apropos'
 // })->name('apropos');
+
+
+
