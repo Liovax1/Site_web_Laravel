@@ -62,24 +62,12 @@ Route::get('/connexion','App\Http\Controllers\Auth\LoginController@connexion')->
 
 Route::get('/listeDesParkings','App\Http\Controllers\PagesListeParkingsController@listeDesParkings')->name('listeDesParkings');
 
-
-// Liste des utilisateurs
-Route::get('/listeDesUtilisateurs', [UserController::class, 'index'])->name('users.index');
-
-// Afficher le formulaire d'ajout d'utilisateur
-Route::get('/listeDesUtilisateurs/ajoutUtilisateur', [UserController::class, 'create'])->name('users.create');
-
-// Enregistrer un nouvel utilisateur
-Route::post('/listeDesUtilisateurs', [UserController::class, 'store'])->name('users.store');
-
-// Afficher le formulaire de modification d'utilisateur
-Route::get('/listeDesUtilisateurs/{user}/editionUtilisateur', [UserController::class, 'edit'])->name('users.edit');
-
-// Mettre à jour un utilisateur
-Route::put('/listeDesUtilisateurs/{user}', [UserController::class, 'update'])->name('users.update');
-
-// Supprimer un utilisateur
-Route::delete('/listeDesUtilisateurs/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::get('/gestionDesUtilisateurs', 'App\Http\Controllers\UserController@gestionUser')->name('gestionUser');
+Route::get('/ajouterUnUtilisateur', 'App\Http\Controllers\UserController@createUser')->name('ajouterUnUtilisateur');
+Route::post('/ajouterUnUtilisateur', 'App\Http\Controllers\UserController@storeUser')->name('storeUser');
+Route::get('/editerUnUtilisateur/{id}', 'App\Http\Controllers\UserController@editUser')->name('editerUnUtilisateur');
+Route::post('/editerUnUtilisateur', 'App\Http\Controllers\UserController@updateUser')->name('updateUser');
+Route::get('/supprimerUnUtilisateur/{id}', 'App\Http\Controllers\UserController@deleteUser')->name('supprimerUnUtilisateur');
 
 
 
@@ -89,29 +77,6 @@ Route::delete('/listeDesUtilisateurs/{user}', [UserController::class, 'destroy']
 Auth::routes();
 
 
-// Route::middleware(['auth', 'role:gestionnaire_place_parking'])->get('pages/apropos', function () {})->name('apropos');
-// Accès uniquement pour les utilisateurs connectés
-// Route::middleware('auth')->group(function () {
-//     // Votre route ici
-// });
-
-// Route::middleware('can:admin')->group(function () {
-//     Route::get('/apropos',
-// 'App\Http\Controllers\PagesAproposController@apropos')->name('apropos') ;
-// });
-
-// Route::middleware('can:gestionnaire_parking')->group(function () {
-
-// });
-
-// Route::middleware('can:gestionnaire_place_parking')->group(function () {
-
-// });
-
-
-// Route::middleware(['auth', 'role:gestionnaire_place_parking'])->get('pages/apropos', function () {
-//     // Votre logique pour la route '/apropos'
-// })->name('apropos');
 
 
 

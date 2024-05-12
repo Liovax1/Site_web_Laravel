@@ -20,8 +20,15 @@
 
 <style>
 .custom-navbar-brand {
-    margin-left: 50px;
+    margin-left: 30px;
+
 }
+.vertical-bar {
+    border-right: 1px solid #000; 
+    height: 20px; 
+    margin-left: 20px; 
+}
+
 </style>
 
     </head>

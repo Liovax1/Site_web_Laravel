@@ -3,70 +3,78 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        $users = User::all();
-        return view('pages/listeDesUtilisateurs')->with('users', $users);
-    }
+    public function gestionUser()
+        {
 
-    public function create()
-    {
-        return view('pages/ajoutUtilisateur');
-    }
+            if (!Auth::check() || !Auth::user()->hasRole('admin')) {
+                return redirect()->route('accueil')->with('popupScript', "alert('Vous n'êtes pas autorisé à consulter cette page');");
+            }
 
-    public function store(request $request)
-    {
-        $user = new User();
+
+            $users = user::all();
+            return view('pages/gestionUser')->with('users', $users);
+        }
+    
+        public function createUser(){
+            return view ('pages/addUser');
+        }
+    
+        public function storeUser(request $request){
+            $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->remember_token = $request->input('password');
         $password = bcrypt($user->remember_token);
         $user->password = $password;
         $user->role_id = $request->input('role_id');
+        $user->ville_id = $request->input('ville_id');
         $user->save();
-        return redirect( url('listeDesUtilisateurs'));
+        return redirect( url('gestionDesUtilisateurs'));
 
-    }
+        }
+        
+        public function editUser($id){
+            if (!Auth::check() || !Auth::user()->hasRole('admin')) {
+                return redirect()->route('accueil')->with('popupScript', "alert('Vous n'êtes pas autorisé à consulter cette page');");
+            }
 
-    public function edit($id)
-    {
-
-        $userFind = new User();
-        $userFind = $userFind->find($id);
-        if (!is_null($userFind))
-        return view ('pages/editionUtilisateur')
+            $userFind = new User();
+            $userFind = $userFind->find($id);
+            if (!is_null($userFind))
+            return view ('pages/editUser')
                 ->with('userFind', $userFind);
-        else
-        return redirect( url('listeDesUtilisateurs'));
-
+            else
+            return redirect( url('gestionDesUtilisateurs'));
+        }
+    
+        public function updateUser(Request $request){
+            $userUpDate = new User();
+            $userUpDate = $userUpDate->find($request->input('id'));
+            $userUpDate->name = $request->input('name');
+            $userUpDate->email = $request->input('email');
+            $userUpDate->remember_token = $request->input('password');
+            $password = bcrypt($userUpDate->remember_token);
+            $userUpDate->password = $password;
+            $userUpDate->role_id = $request->input('role_id');
+            $userUpDate->ville_id = $request->input('ville_id');
+            $userUpDate->save();
+            return redirect( url('gestionDesUtilisateurs'));
+        }
+    
+        public function deleteUser($id){
+            if (Auth::check() && (Auth::user()->hasRole('admin'))) {
+                $user = User::find($id);
+                if ($user) {
+                    $user->delete();
+                }
+                return redirect(url('gestionDesUtilisateurs'))->with('popupScript', "alert('Utilisateur supprimé avec succès');");
+            } else {
+                return response()->view('pages.403', [], 403);
+            }
+        }
     }
-
-    public function update(Request $request, User $user)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'sometimes|min:6',
-            
-        ]);
-
-        $user->update([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => isset($validatedData['password']) ? bcrypt($validatedData['password']) : $user->password,
-           
-        ]);
-
-        return redirect()->route('pages/listeDesUtilisateurs')->with('success', 'Utilisateur modifié avec succès');
-    }
-
-    public function destroy(User $user)
-    {
-        $user->delete();
-        return redirect()->route('pages/listeDesUtilisateurs')->with('success', 'Utilisateur supprimé avec succès');
-    }
-}
