@@ -21,8 +21,8 @@
         <td><input type="password" name="password" id="password"> <br></td>
         <td><select id="role_id" name="role_id">
             <option value="1">admin</option>
-            <option value="3">gestionnaire_parking</option>
-            <option value="4">gestionnaire_place_parking</option>
+            <option value="4">gestionnaire_parking</option>
+            <option value="5">gestionnaire_place_parking</option>
         </select> <br></td>
         <td><select id="ville_id" name="ville_id">
             <option value="1">Castillon-la-Bataille</option>
