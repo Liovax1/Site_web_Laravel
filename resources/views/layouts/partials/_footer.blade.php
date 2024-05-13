@@ -6,10 +6,10 @@
         </a>
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link text-primary" href="{{ route('apropos') }}">A propos</a>
+                <a class="nav-link text-dark" href="{{ route('apropos') }}">A propos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary" href="{{ route('accueil') }}">Accueil</a>
+                <a class="nav-link text-dark" href="{{ route('accueil') }}">Accueil</a>
             </li>
         </ul>
     </div>
