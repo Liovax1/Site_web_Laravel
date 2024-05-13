@@ -139,7 +139,7 @@ class PagesParkingController extends Controller
     $parking = Parking::findOrFail($id);
     $parking->delete();
 
-    return redirect('/tousLesParkings');
+    return redirect()->back();
 }
 
 

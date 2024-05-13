@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
     <br>
-    <br><h1 class="text-center">Parkings {!! $ville->nom !!}</h1><br>
+    <br><h1 class="text-center">Parkings de la ville de {!! $ville->nom !!}</h1><br>
 
     <!-- Tableau pour les parkings -->
     <br><div class="container mb-5">
