@@ -48,33 +48,8 @@ class ApiGaBuZoMeuController extends Controller
             
             $typeNoeud = $noeudFind->type_noeud; // On récupère le type de noeud de l'url
             
-            return response()->json(['ID' => $noeudFind->parking_id, 'Places dispos' => $parkingFind->nombre_place_dispo, 'Places totale' => $parkingFind->nombre_place_total, 'Type' => $typeNoeud, 'Afficheurs' => $EuiAfficheur], 200);
+            return response()->json(['ID' => $noeudFind->parking_id, 'Places dispos' => $parkingFind->nombre_place_dispo, 'Type' => $typeNoeud, 'Afficheurs' => $EuiAfficheur], 200);
             }
             } 
-
-
-            function getInfoParking($parking){
-                $parking = Parking::find($parking);
-            
-                if(!$parking) {
-                    return response()->json(['Erreur' => 'Parking non trouvé'], 404);
-                }
-            
-                $parkingInfo = [
-                    'Places dispos' => $parking->nombre_place_dispo,
-                    'Places totales' => $parking->nombre_place_total
-                ];
-            
-                return response()->json($parkingInfo, 200);
-            }
-            
+    
 }
-
-
-
-
-
-
-
-
-

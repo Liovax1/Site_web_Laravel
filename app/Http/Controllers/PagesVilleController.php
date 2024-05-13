@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Ville;
 use App\Models\Parking;
+use Illuminate\Support\Facades\Auth;
 use Schema;
 
 class PagesVilleController extends Controller
@@ -16,6 +17,11 @@ class PagesVilleController extends Controller
         $ville = new Ville();
         $villes = $ville->all();
         $nomsChamps = Schema::getColumnListing($ville->getTable());
+
+        if (!Auth::check() || !Auth::user()->hasRole('admin') && !Auth::user()->hasRole('gestionnaire_parking')) {
+            return redirect()->route('accueil');
+        }
+        
         return view('pages/villes')
             ->with('villes', $villes)
             ->with('nomsChamps', $nomsChamps);
@@ -27,6 +33,11 @@ class PagesVilleController extends Controller
         $ville = new Ville();
         $villeFind = $ville->find($id);
         $nomsChamps = Schema::getColumnListing($ville->getTable());
+
+        if (!Auth::check() || !Auth::user()->hasRole('admin') && !Auth::user()->hasRole('gestionnaire_parking')) {
+            return redirect()->route('accueil');
+        }
+        
         return view('pages/ville')
             ->with('villeFind', $villeFind)
             ->with('nomsChamps', $nomsChamps);

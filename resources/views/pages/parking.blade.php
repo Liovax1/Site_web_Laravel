@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+
     <br>
     <h1 class="text-center">Parking</h1>
 

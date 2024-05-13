@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,8 @@ Route::get('/parkingsVille/{id}', 'App\Http\Controllers\PagesParkingController@p
 
 
 
+Route::get('/apropos',
+'App\Http\Controllers\PagesAproposController@apropos')->name('apropos') ;
 
 Route::post('/saveVille', 'App\Http\Controllers\PagesVilleController@saveVille');
 
@@ -81,10 +84,25 @@ Route::delete('/noeud_lora/{id}/delete', 'App\Http\Controllers\PagesNoeudLoraCon
 
 Route::get('/accueil','App\Http\Controllers\PagesAccueilController@accueil')->name('accueil');
 
-
 Route::get('/connexion','App\Http\Controllers\Auth\LoginController@connexion')->name('connexion') ;
+
+Route::get('/listeDesParkings','App\Http\Controllers\PagesListeParkingsController@listeDesParkings')->name('listeDesParkings');
+
+Route::get('/gestionDesUtilisateurs', 'App\Http\Controllers\UserController@gestionUser')->name('gestionUser');
+Route::get('/ajouterUnUtilisateur', 'App\Http\Controllers\UserController@createUser')->name('ajouterUnUtilisateur');
+Route::post('/ajouterUnUtilisateur', 'App\Http\Controllers\UserController@storeUser')->name('storeUser');
+Route::get('/editerUnUtilisateur/{id}', 'App\Http\Controllers\UserController@editUser')->name('editerUnUtilisateur');
+Route::post('/editerUnUtilisateur', 'App\Http\Controllers\UserController@updateUser')->name('updateUser');
+Route::get('/supprimerUnUtilisateur/{id}', 'App\Http\Controllers\UserController@deleteUser')->name('supprimerUnUtilisateur');
+
+
+
+
+
 
 Auth::routes();
 
 
-Route::middleware(['auth', 'role:gestionnaire_place_parking'])->get('pages/apropos', function () {})->name('apropos');
+
+
+
