@@ -5,7 +5,6 @@
 
 <br>
 <div>
-<h1>Accueil</h1>
     <h1 class="text-center">Accueil</h1>
 </div>
 

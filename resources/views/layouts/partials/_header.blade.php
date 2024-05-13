@@ -58,7 +58,7 @@
                     </li>
                     
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ route('apropos') }}">A propos</a>
+                    <a class="nav-link text-dark" href="{{ route('apropos') }}">À propos</a>
                 </li>
                 <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
