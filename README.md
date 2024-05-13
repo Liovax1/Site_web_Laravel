@@ -1,81 +1,133 @@
-## LaraVoyageur - Container docker Laravel+Voyager Ready to Go
+# Documentation d'installation de Laravel pour le Projet Gabuzomeu
 
-## Contenu
+## Introduction
 
-3 containers
-* Une application Laravel avec Laravel pre packagé
-* Un serveur nginx
-* Un serveur mariadb
+Cette documentation détaille les étapes nécessaires pour installer Laravel.
 
-## Source
+## Étapes d'installation
 
-Basé sur le tutoriel [Digital Ocean - How To Install and Set Up Laravel with Docker Compose on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-set-up-laravel-with-docker-compose-on-ubuntu-22-04)
+### 1. Installer toutes les dépendances nécessaire pour l'installation
 
+```bash
+sudo apt install curl git php libapache2-mod-php php-mbstring php-xmlrpc php-soap php-gd php-xml php-cli php-zip php-bcmath php-tokenizer php-json php-pear php-mysql php-curl apache2
+```
 
-### Quelques modifications du tutoriel
+<div class="dark bg-gray-950 rounded-md" id="bkmrk-"></div><div class="p-4 overflow-y-auto" id="bkmrk--1"></div>```bash
+sudo curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+sudo chmod +x /usr/local/bin/composer
+```
 
-* Utilisation des containers plus récents pour nginx, mysql et php
-* Utilisation de `docker compose` et non pas `docker-compose`
-* Adaptation des noms pour refléter notre application `laravoyager`
-* Un volume persistant pour la base de donnée
-* Le .env est publié pour avoir les infos BDD, etc **(à ne pas faire en production !!!)**
+télécharger mysql avec un tuto en ligne
 
-### USage
+### 2. Cloner le projet Laravel
 
-* Cloner le dépôt
-* Compiler l'image
+```bash
+cd /var/www/html
+sudo git clone https://gitlab.ciel-kastler.fr/2024-gabuzomeu/site_web_laravel
+```
 
-~~~ shell
-docker compose build app
-~~~
-* Lancer les containers
+### 3. Installer les dépendances Composer
 
-~~~ shell
-docker compose up -d
-~~~
+```bash
+cd site_web_laravel/
+sudo composer update
+sudo composer install
+```
 
-* Vérifier que les containers s'exécutent correctement
+### 4. Modifier les permission du dossier de projet
 
-~~~ shell
-docker compose ps
-NAME                IMAGE               COMMAND                  SERVICE             CREATED             STATUS              PORTS
-laravoyager-app     laravoyager         "docker-php-entrypoi…"   app                 2 minutes ago       Up 2 minutes        9000/tcp
-laravoyager-db      mariadb:10.5        "docker-entrypoint.s…"   db                  2 minutes ago       Up 2 minutes        3306/tcp
-laravoyager-nginx   nginx:1.22-alpine   "/docker-entrypoint.…"   nginx               2 minutes ago       Up 2 minutes        0.0.0.0:8000->80/tcp, :::8000->80/tcp
-~~~
+```bash
+sudo chown -R www-data:www-data /var/www/html/site_web_laravel
+sudo chmod -R 755 /var/www/html/site_web_laravel
+sudo chown -R www-data:www-data /var/www/html/site_web_laravel/.env
+```
 
-* Modification des droits sur database
-~~~ shell
-sudo chmod 777 -R database/
-~~~
+### 5. Modifier le fichier .env
 
-* Installer les dépendances ( cela crée le dossier vendor)
+```bash
+sudo nano /var/www/html/site_web_laravel/.env
+```
 
-~~~ shell
-docker compose exec app rm -rf vendor composer.lock
+La partie nous intéressent est celle ci:
 
-docker compose exec app composer install
-~~~
+```
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=laravoyager
+DB_USERNAME=laravoyager_user
+DB_PASSWORD=mdpsnir
 
+```
 
-* Accéder à l'application
+Il faut alors remplacer certaines partie dépendent de votre configuration voulu:
 
-~~~
-http://127.0.0.1:8000
-~~~
+```
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE="Nom de la base de donnée"
+DB_USERNAME="Utilisateur de la base de donnée"
+DB_PASSWORD="Mot de passe de l'utilisateur de la base de donnée"
 
-* tester voyager 
-~~~
-http://127.0.0.1:8000/admin
-~~~
+```
 
-__Voyager__  
-admin@admin.com  
-password  
+### 6. Générer la clé et lié le stockage
 
-si l'accès à voyager ne fonctionne pas tester l'instruction suivante et croiser les doigts !
+```bash
+sudo php artisan key:generate
+sudo php artisan storage:link
+```
 
-~~~ shell
-docker compose exec app php artisan voyager:install --with-dummy
-~~~
-doc install voyager : https://voyager-docs.devdojo.com/getting-started/installation
+### 7. Création et remplissage de la base de donnée
+
+```bash
+sudo mysql
+```
+
+```sql
+CREATE DATABASE ma_base;
+CREATE USER mon_user@localhost IDENTIFIED by 'mon_password';
+GRANT ALL PRIVILEGES ON ma_base.* to mon_user@localhost;
+```
+
+Importer la structure et le contenu de la base de données
+
+```bash
+cat /var/www/html/site_web_laravel/docker-compose/mysql/init_db.sql | mysql -u nom_user -p nom_database
+```
+
+effectuer les migrations et utiliser le seeder
+
+```php
+php artisan migrate
+php artisan db:seed
+```
+
+### 7. Configuration de Apache
+
+```bash
+sudo a2enmod rewrite
+sudo nano /etc/apache2/sites-enabled/000-default.conf
+```
+
+rajouter cette partie a la fin du fichier
+
+```
+<Directory /var/www/html/site_web_laravel>
+ Allowoverride All
+</Directory>
+```
+
+et modifier la partie DocumentRoot par:
+
+```
+DocumentRoot /var/www/html/site_web_laravel/public
+```
+
+## Conclusion
+
+Félicitations ! Vous avez réussi à installer Laravel pour le Projet Gabuzomeu. Vous pouvez maintenant y accéder a l’adresse de la machine avec l’utilisateur <admin@admin.com> et le mot de passe password
+
+Pour plus d'informations sur Laravel, consultez la documentation officielle sur [https://laravel.com/docs](https://laravel.com/docs).

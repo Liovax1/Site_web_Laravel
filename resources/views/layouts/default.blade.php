@@ -1,12 +1,37 @@
 <!doctype html>
 
-<head>
-    <title>
-        Accueil
-    </title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<html lang="fr">
 
-</head>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="Xbo7SfuPFa03DJGmcX6b4Y2YeZj0QsPJOYrVYz45">
+    <title>{{ Voyager::setting('site.title') }}</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#ff8020">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="{{ asset('storage/' .Voyager::setting('site.logo2')) }}">
+    
+
+<!-- JavaScript Bootstrap bundle (incluant Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+.custom-navbar-brand {
+    margin-left: 30px;
+
+}
+.vertical-bar {
+    border-right: 1px solid #000; 
+    height: 20px; 
+    margin-left: 20px; 
+}
+
+</style>
+
+    </head>
 
 <body>
     @include('layouts/partials/_header')
@@ -15,9 +40,9 @@
     </main>
     @include('layouts/partials/_footer')
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z8w/Z5TCYG5vzWn1BfB6TY7k3ccxuracl4+eOA" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js" integrity="sha384-KvshFF5O0x4tHc9tuX6Z9Gi7hxF4hIpjv82w5jFYy9HnEbTkcCE1vmK7oXs15Rnn" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

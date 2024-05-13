@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+
 <br>
 <h1 class="text-center">Villes :</h1><br>
 
@@ -12,6 +13,7 @@
                 <th class="text-center">Code Postal</th>
                 <th class="text-center">Latitude</th>
                 <th class="text-center">Longitude</th>
+                <th class="text-center"></th>
             </tr>
         </thead>
         <tbody>
@@ -21,13 +23,22 @@
                 <td class="text-center">{!! $ville->code_postal !!}</td>
                 <td class="text-center">{!! $ville->latitude !!}</td>
                 <td class="text-center">{!! $ville->longitude !!}</td>
-                <td class="text-center"><button type="button" class="btn btn-primary" data-id="{!! $ville->id !!}">Éditer</button></td>
-                <td class="text-center"><button type="button" class="btn btn-danger">supprimer</button></td>
+                <td class="text-center">
+                        <button type="button" class="btn btn-primary mr-5" data-id="{!! $ville->id !!}">Éditer</button>
+                        <form action="/ville/{!! $ville->id !!}/delete" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
             </tr>
             @endforeach
 
         </tbody>
     </table>
+    <div class="d-flex justify-content-end m-5">
+            <a href="/formAjouterVille" class="btn btn-success mr-4">Ajouter</a>
+        </div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
