@@ -30,7 +30,7 @@ class ParkingsTableSeeder extends Seeder
                 'latitude'=>'44.852646 ',
                 'longitude'=>'-0.043511',
                 'ville_id'=>1,
-                'nombre_place_dispo'=>'0',
+                'nombre_place_dispo'=>'50',
                 'nombre_place_total'=>'200',
                 'seuil_critique'=>$seuil_critique,
                 'seuil_alerte'=>$seuil_alerte

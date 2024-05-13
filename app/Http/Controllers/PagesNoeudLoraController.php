@@ -2,28 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\NoeudLora ;
-use Schema ;
+use App\Models\NoeudLora;
+use Schema;
 use App\Models\Parking;
 use Illuminate\Http\Request;
 
 
 class PagesNoeudLoraController extends Controller
 {
-    public function all(){
+    public function all()
+    {
         $noeud_lora = new NoeudLora();
         $noeud_loras = $noeud_lora->all();
-        $parkings = Parking::all(); 
+        $parkings = Parking::all();
         $nomsChamps = Schema::getColumnListing($noeud_lora->getTable());
-        return view ('pages/tousLesNoeudsLoras')
+        return view('pages/tousLesNoeudsLoras')
             ->with('noeud_loras', $noeud_loras)
-            ->with('parkings', $parkings) 
-            ->with('nomsChamps', $nomsChamps);  
+            ->with('parkings', $parkings)
+            ->with('nomsChamps', $nomsChamps);
     }
 
 
 
-    public function noeudLora($id){
+    public function noeudLora($id)
+    {
         $noeudLora = new NoeudLora();
         $noeudLoraFind = $noeudLora->find($id);
         $nomsChamps = Schema::getColumnListing($noeudLora->getTable());
@@ -33,34 +35,74 @@ class PagesNoeudLoraController extends Controller
             ->with('nomsChamps', $nomsChamps)
             ->with('parkings', $parkings); // Ajout de cette ligne
     }
+
+
+
+
+
+    public function saveNoeud($id, Request $request)
+    {
+        $id = $request->input('id');
+        
+        $validatedData = $request->validate([
+            'nom_noeud' => 'required',
+            'dev_eui' => 'required',
+            'parking_id_' . $id => 'required', // Ajout de l'ID au nom du champ
+        ]);
     
+        $noeud_lora = NoeudLora::find($id);
+        $noeud_lora->nom_noeud = $request->input('nom_noeud');
+        $noeud_lora->type_noeud = $request->input('type_noeud');
+        $noeud_lora->dev_eui = $request->input('dev_eui');
+        $noeud_lora->parking_id = $request->input('parking_id_' . $id); // Utilisation du même nom de champ
+        $noeud_lora->save();
     
-
-
-
-    public function saveNoeud(Request $request)
-{
-    foreach ($request->all() as $key => $value) {
-        if (str_starts_with($key, 'id_')) {
-            $id = substr($key, 3);
-            $noeud_lora = NoeudLora::find($id);
-            if ($noeud_lora) {
-                $noeud_lora->nom_noeud = $request->input('nom_noeud_'.$id);
-                $noeud_lora->type_noeud = $request->input('type_noeud_'.$id);
-                $noeud_lora->dev_eui = $request->input('dev_eui_'.$id);
-                $noeud_lora->parking_id = $request->input('parking_id_'.$id); 
-                $noeud_lora->save();
-            }
-        }
+        return redirect()->route('tousLesNoeudsLoras');
     }
-    return back();
+    
+    
+
+
+
+
+    public function edit()
+    {
+        $noeud_loras = NoeudLora::all();
+        $parkings = Parking::all();
+        return view('noeud_loras', ['noeud_loras' => $noeud_loras, 'parkings' => $parkings]);
+    }
+
+    public function createNoeud()
+    {
+        $parkings = Parking::all();
+        return view('pages/formAjouterNoeud',  ['parkings' => $parkings]);
+    }
+
+
+    public function ajoutNoeud(Request $request)
+{
+    $validatedData = $request->validate([
+        'nom_noeud' => 'required',
+        'dev_eui' => 'required',
+    ]);
+    $noeud_lora = new NoeudLora;
+    $noeud_lora->nom_noeud = $request->input('nom_noeud');
+    $noeud_lora->type_noeud = $request->input('type_noeud');
+    $noeud_lora->dev_eui = $request->input('dev_eui');
+    $noeud_lora->parking_id = $request->input('parking_id');
+    $noeud_lora->save();
+
+    return redirect()->route('tousLesNoeudsLoras');
+}
+  
+
+public function delete($id)
+{
+    $noeud_lora = NoeudLora::findOrFail($id);
+    $noeud_lora->delete();
+
+    return redirect('/tousLesNoeudsLoras');
 }
 
-public function edit() {
-    $noeud_loras = NoeudLora::all();
-    $parkings = Parking::all(); 
-    return view('noeud_loras', ['noeud_loras' => $noeud_loras, 'parkings' => $parkings]);
-}
 
 }
-

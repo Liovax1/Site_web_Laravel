@@ -2,7 +2,7 @@
 @section('content')
 
     <br>
-    <h1 class="text-center">Parking</h1><br>
+    <h1 class="text-center">Parking</h1>
 
 <!-- Formulaire pour le parking -->
 <form method="post" action="/saveParking" class="container mb-5">
@@ -45,10 +45,16 @@
         <input type="text" id="nombre_place_total" name="nombre_place_total" value="{!! $parking->nombre_place_total !!}" class="form-control">
     </div>
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            Veuillez remplir tous les champs du formulaire.
+        </div>
+        @endif
+
     <!-- Boutons -->
     <div class="text-right mt-5">
-        <button type="submit" class="btn btn-primary mr-2">Sauvegarder</button>
-        <button type="reset" class="btn btn-secondary">Annuler</button>
+        <button type="submit" class="btn btn-primary mr-3">Sauvegarder</button>
+        <a href="/tousLesParkings" class="btn btn-secondary mr">Annuler</a>
     </div>
 </form>
 
