@@ -75,24 +75,29 @@ Route::post('/ajoutNoeud', 'App\Http\Controllers\PagesNoeudLoraController@ajoutN
 
 Route::delete('/noeud_lora/{id}/delete', 'App\Http\Controllers\PagesNoeudLoraController@delete');
 
-
-
-
-
-
-
-
 Route::get('/accueil','App\Http\Controllers\PagesAccueilController@accueil')->name('accueil');
 
 Route::get('/connexion','App\Http\Controllers\Auth\LoginController@connexion')->name('connexion') ;
 
-Route::get('/listeDesParkings','App\Http\Controllers\PagesListeParkingsController@listeDesParkings')->name('listeDesParkings');
+Route::get('/listeDesParkings/{id}','App\Http\Controllers\PagesListeParkingsController@listeDesParkings')->name('listeDesParkings');
+
+Route::get('/listeDesVilles','App\Http\Controllers\PagesListeVillesController@listeDesVilles')->name('listeDesVilles');
+
+
+
+
+
 
 Route::get('/gestionDesUtilisateurs', 'App\Http\Controllers\UserController@gestionUser')->name('gestionUser');
+
 Route::get('/ajouterUnUtilisateur', 'App\Http\Controllers\UserController@createUser')->name('ajouterUnUtilisateur');
+
 Route::post('/ajouterUnUtilisateur', 'App\Http\Controllers\UserController@storeUser')->name('storeUser');
+
 Route::get('/editerUnUtilisateur/{id}', 'App\Http\Controllers\UserController@editUser')->name('editerUnUtilisateur');
+
 Route::post('/editerUnUtilisateur', 'App\Http\Controllers\UserController@updateUser')->name('updateUser');
+
 Route::get('/supprimerUnUtilisateur/{id}', 'App\Http\Controllers\UserController@deleteUser')->name('supprimerUnUtilisateur');
 
 

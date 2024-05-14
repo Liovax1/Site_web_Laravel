@@ -3,7 +3,7 @@
 
 <br>
 <div>
-    <h1 class="text-center">Liste des Parkings</h1>
+    <h1 class="text-center">Liste des Parkings de {{ $ville->nom }}</h1>
 </div>
 <br>
 
