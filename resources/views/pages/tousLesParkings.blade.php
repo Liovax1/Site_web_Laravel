@@ -23,6 +23,7 @@
             <tbody>
                 @foreach( $parkings as $parking)
                 <tr>
+                @if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('gestionnaire_parking') && Auth::user()->ville_id == $parking->ville_id)
                     <td class="text-center">{!! $parking->nom_parking !!}</td>
                     <td class="text-center">{!! $parking->ville->nom !!}</td>
                     <td class="text-center">{!! $parking->latitude !!}</td>
@@ -37,6 +38,7 @@
                             <button type="submit" class="btn btn-danger">Supprimer</button>
                         </form>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>
