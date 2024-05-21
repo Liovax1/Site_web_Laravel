@@ -9,25 +9,22 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ route('listeDesParkings') }}">Liste des Parkings</a>
+                    <a class="nav-link text-dark" href="{{ route('listeDesVilles') }}">Liste des Villes</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 @auth
                     @if(auth()->user()->hasRole('admin'))
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ route('gestionUser') }}">Gestion des Utilisateurs</a>
-                    </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownGestions" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestion</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownGestions">
+                            <li><a class="dropdown-item" href="{{ route('gestionUser') }}">Gestion des Utilisateurs</a></li>
                             <li><a class="dropdown-item" href="{{ route('villes') }}">Gérer les Villes</a></li>
                             <li><a class="dropdown-item" href="{{ route('tousLesParkings') }}">Gérer les Parkings</a></li>
                             <li><a class="dropdown-item" href="{{ route('tousLesNoeudsLoras') }}">Gérer les Noeuds</a></li>
                         </ul>
                     </li>
-
 
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="{{ route('apropos') }}">A propos</a>
@@ -77,7 +74,7 @@
                 @elseif(auth()->user()->hasRole('gestionnaire_place_parking'))
                 
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Ajuster place</a>
+                    <a class="nav-link text-dark" href="{{ route('tousLesParkings') }}">Ajuster place</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="{{ route('apropos') }}">A propos</a>

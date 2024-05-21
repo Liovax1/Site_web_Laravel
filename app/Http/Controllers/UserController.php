@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Ville;
 
 class UserController extends Controller
 {
@@ -21,7 +23,9 @@ class UserController extends Controller
         }
     
         public function createUser(){
-            return view ('pages/addUser');
+            $roles = DB::table('roles')->get();
+            $villes = Ville::all();
+            return view ('pages/addUser', compact('roles', 'villes'));
         }
     
         public function storeUser(request $request){
@@ -45,8 +49,10 @@ class UserController extends Controller
 
             $userFind = new User();
             $userFind = $userFind->find($id);
+            $villes = Ville::all();
+            $roles = DB::table('roles')->get();
             if (!is_null($userFind))
-            return view ('pages/editUser')
+            return view ('pages/editUser', compact('userFind', 'roles', 'villes'))
                 ->with('userFind', $userFind);
             else
             return redirect( url('gestionDesUtilisateurs'));

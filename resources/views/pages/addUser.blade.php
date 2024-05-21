@@ -20,18 +20,19 @@
         <td><input type="text" name="email" id="email"> <br></td>
         <td><input type="password" name="password" id="password"> <br></td>
         <td><select id="role_id" name="role_id">
-            <option value="1">admin</option>
-            <option value="4">gestionnaire_parking</option>
-            <option value="5">gestionnaire_place_parking</option>
+        @foreach ($roles as $role)
+            <option value="{{ $role->id }}">{{ $role->name }}</option>
+        @endforeach
         </select> <br></td>
         <td><select id="ville_id" name="ville_id">
-            <option value="1">Castillon-la-Bataille</option>
-            <option value="2">Bordeaux</option>
+        @foreach ($villes as $ville)
+            <option value="{{ $ville->id }}">{{ $ville->nom }}</option>
+        @endforeach
         </select> <br></td>
 </tr>
 </thread>
 </table>
-    <input type="submit" value="Ajouter">
+    <button class="btn btn-info" type="submit" value="Ajouter">Ajouter</button>
 </form>
 
 @stop

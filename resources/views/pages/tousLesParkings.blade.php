@@ -9,20 +9,25 @@
         <table class="table">
             <thead>
                 <tr>
+                
                     <th class="text-center">Nom</th>
                     <th class="text-center">Ville</th>
+                    @if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('gestionnaire_parking'))
                     <th class="text-center">Latitude</th>
                     <th class="text-center">Longitude</th>
+                    @endif
                     <th class="text-center">Places disponibles</th>
                     <th class="text-center">Total de places</th>
                     <th class="text-center"></th>
+                
+                
 
-                    
                 </tr>
             </thead>
             <tbody>
                 @foreach( $parkings as $parking)
                 <tr>
+                @if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('gestionnaire_parking') && Auth::user()->ville_id == $parking->ville_id)
                     <td class="text-center">{!! $parking->nom_parking !!}</td>
                     <td class="text-center">{!! $parking->ville->nom !!}</td>
                     <td class="text-center">{!! $parking->latitude !!}</td>
@@ -37,6 +42,19 @@
                             <button type="submit" class="btn btn-danger">Supprimer</button>
                         </form>
                     </td>
+                    @endif
+
+                    @if (Auth::user()->hasRole('gestionnaire_place_parking') && Auth::user()->ville_id == $parking->ville_id)
+                    <td class="text-center">{!! $parking->nom_parking !!}</td>
+                    <td class="text-center">{!! $parking->ville->nom !!}</td>
+                    <td class="text-center">{!! $parking->nombre_place_dispo !!}</td>
+                    <td class="text-center">{!! $parking->nombre_place_total !!}</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-primary mr-2" data-id="{!! $parking->id !!}">Éditer</button>
+                    </td>
+                    @endif
+
+
                 </tr>
                 @endforeach
             </tbody>

@@ -3,7 +3,7 @@
 
 <br>
 <div>
-    <h1 class="text-center">Liste des Parkings</h1>
+    <h1 class="text-center">Liste des Parkings de {{ $ville->nom }}</h1>
 </div>
 <br>
 
@@ -26,6 +26,10 @@
         </div>
         @endforeach
     </div>
+    <br><div class="d-flex justify-content-end mr-5">
+            <a href="{{ route('listeDesVilles') }}" class="btn btn-success">Retour</a>
+        </div>
 </div>
+
 
 @stop

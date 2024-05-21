@@ -18,7 +18,7 @@ class PagesVilleController extends Controller
         $villes = $ville->all();
         $nomsChamps = Schema::getColumnListing($ville->getTable());
 
-        if (!Auth::check() || !Auth::user()->hasRole('admin') && !Auth::user()->hasRole('gestionnaire_parking')) {
+        if (!Auth::check() || !Auth::user()->hasRole('admin')) {
             return redirect()->route('accueil');
         }
         
@@ -34,7 +34,7 @@ class PagesVilleController extends Controller
         $villeFind = $ville->find($id);
         $nomsChamps = Schema::getColumnListing($ville->getTable());
 
-        if (!Auth::check() || !Auth::user()->hasRole('admin') && !Auth::user()->hasRole('gestionnaire_parking')) {
+        if (!Auth::check() || !Auth::user()->hasRole('admin')) {
             return redirect()->route('accueil');
         }
         
@@ -100,6 +100,11 @@ class PagesVilleController extends Controller
 
     public function saveVille(Request $request)
     {
+
+        if (!Auth::check() || !Auth::user()->hasRole('admin')) {
+            return redirect()->route('accueil');
+        }
+    
         $validatedData = $request->validate([
             'nom' => 'required',
             'code_postal' => 'required',
@@ -125,6 +130,11 @@ class PagesVilleController extends Controller
 
     public function createVille()
     {
+
+        if (!Auth::check() || !Auth::user()->hasRole('admin')) {
+            return redirect()->route('accueil');
+        }
+
         $villes = Ville::all();
         return view('pages/formAjouterVille',  ['villes' => $villes]);
     }
@@ -133,6 +143,10 @@ class PagesVilleController extends Controller
 
     public function ajoutVille(Request $request)
 {
+
+    if (!Auth::check() || !Auth::user()->hasRole('admin')) {
+        return redirect()->route('accueil');
+    }
 
     $validatedData = $request->validate([
         'nom' => 'required',
@@ -154,6 +168,10 @@ class PagesVilleController extends Controller
 
 public function delete($id)
 {
+    if (!Auth::check() || !Auth::user()->hasRole('admin')) {
+        return redirect()->route('accueil');
+    }
+
     $ville = Ville::findOrFail($id);
     $ville->delete();
 
