@@ -6,6 +6,7 @@ use App\Models\NoeudLora;
 use Schema;
 use App\Models\Parking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class PagesNoeudLoraController extends Controller
@@ -16,6 +17,9 @@ class PagesNoeudLoraController extends Controller
         $noeud_loras = $noeud_lora->all();
         $parkings = Parking::all();
         $nomsChamps = Schema::getColumnListing($noeud_lora->getTable());
+        if (!Auth::check() || !Auth::user()->hasRole('admin') && !Auth::user()->hasRole('gestionnaire_parking')) {
+            return redirect()->route('accueil');
+        }
         return view('pages/tousLesNoeudsLoras')
             ->with('noeud_loras', $noeud_loras)
             ->with('parkings', $parkings)
