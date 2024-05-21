@@ -11,6 +11,7 @@
                     <th class="text-center">Nom du Noeud</th>
                     <th class="text-center">Type de noeud</th>
                     <th class="text-center">Dev EUI</th>
+                    <th class="text-center">Ville</th>
                     <th class="text-center">Nom du Parking</th>
                     <th class="text-center"></th>
                 </tr>
@@ -21,6 +22,13 @@
                     <td class="text-center">{!! $noeud_lora->nom_noeud !!}</td>
                     <td class="text-center">{!! $noeud_lora->type_noeud !!}</td>
                     <td class="text-center">{!! $noeud_lora->dev_eui !!}</td>
+                    <td class="text-center">
+                        @foreach($parkings as $parking)
+                        @if($noeud_lora->parking_id == $parking->id)
+                        {!! $parking->ville->nom !!}
+                        @endif
+                        @endforeach
+                    </td>
                     <td class="text-center">
                         @foreach($parkings as $parking)
                         @if($noeud_lora->parking_id == $parking->id)
