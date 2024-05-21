@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <h4 class="text-center">{{ $ville->nom }}</h4>
                     <p class="text-center"><strong>Nombre de Parking : {{ $ville->nombre_total_parkings }}</strong></p>
-                    <a class="btn btn-success d-flex" href="{{ route('listeDesParkings', ['id' => $ville->id]) }}">
+                    <a class="btn btn-primary d-flex" href="{{ route('listeDesParkings', ['id' => $ville->id]) }}">
                         <h2 class="btn text-white mb-0">
                         Voir les Parkings
                         </h2>

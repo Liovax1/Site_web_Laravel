@@ -29,8 +29,12 @@
     margin-left: 20px; 
 }
 
-
-
+.map-container {
+        border: 2px solid #007BFF;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
 
 body {
   --sb-track-color: #232e33;

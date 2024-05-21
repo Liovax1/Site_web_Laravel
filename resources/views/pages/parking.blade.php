@@ -70,17 +70,6 @@
 @endif
 
 
-@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('gestionnaire_parking'))
-    <div class="form-group">
-        <label for="latitude">Latitude :</label>
-        <input type="text" id="latitude" name="latitude" value="{!! $parking->latitude !!}" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="longitude">Longitude :</label>
-        <input type="text" id="longitude" name="longitude" value="{!! $parking->longitude !!}" class="form-control">
-    </div>
-@endif
-
 @if (Auth::user()->hasRole('gestionnaire_place_parking'))
     <div class="form-group">
         <label for="latitude">Latitude :</label>
@@ -91,9 +80,6 @@
         <input type="text" id="longitude" name="longitude" value="{!! $parking->longitude !!}" class="form-control" readonly>
     </div>
 @endif
-
-
-
 
     <div class="form-group">
         <label for="nombre_place_dispo">Nombre de places disponibles :</label>
