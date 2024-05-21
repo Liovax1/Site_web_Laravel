@@ -26,6 +26,10 @@
         </div>
         @endforeach
     </div>
+    <br><div class="d-flex justify-content-end mr-5">
+            <a href="{{ route('listeDesVilles') }}" class="btn btn-success">Retour</a>
+        </div>
 </div>
+
 
 @stop

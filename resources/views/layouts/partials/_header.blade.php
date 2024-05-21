@@ -74,7 +74,7 @@
                 @elseif(auth()->user()->hasRole('gestionnaire_place_parking'))
                 
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Ajuster place</a>
+                    <a class="nav-link text-dark" href="{{ route('tousLesParkings') }}">Ajuster place</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="{{ route('apropos') }}">A propos</a>
