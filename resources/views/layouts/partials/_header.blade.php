@@ -93,6 +93,25 @@
                     </ul>
                     </li>
 
+                    @elseif(auth()->user()->hasRole('user'))
+
+                    <li class="nav-item">
+                    <a class="nav-link text-dark" href="{{ route('apropos') }}">A propos</a>
+                </li>
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {!! Auth::user()->name !!} - Role : {!! Auth::user()->role->name !!}
+                        </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li class="nav-item">
+                        <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="dropdown-item">Se déconnecter</button>
+                        </form>
+                    </li>
+                    </ul>
+                    </li>
+
                 @endif
                 @endauth
             </ul>

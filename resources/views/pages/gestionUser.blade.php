@@ -13,7 +13,6 @@
               <th scope="col">Id</th>  
               <th scope="col">Nom d'utilisateur</th>    
               <th scope="col">Email</th>
-              <th scope="col">Mot de passe</th>
               <th scope="col">Role</th>
               <th scope="col">Ville</th>
               <th scope="col">Modifier</th>
@@ -26,7 +25,6 @@
                   <th scope="row">{!! $user->id !!}</th>
                   <td>{!! $user->name !!}</td>
                   <td>{!! $user->email !!}</td>
-                  <td>{!! $user->password !!}</td>
                   <td>{!! $user->role->name !!}</td>
                   <td>{!! $user->ville_id !!}</td>	      
                    <td>

@@ -7,6 +7,8 @@
 <form action="{{ url('editerUnUtilisateur') }}" method="POST">
     @csrf 
     <input type="hidden" id="id" name="id" value="{!! $userFind->id !!}">
+    <div class="container">
+    <div class="table-responsive">
     <table class="table">
     <thead>
     <tr>
@@ -34,7 +36,9 @@
 </tr>
 </thread>
 </table>
+</div>
 <button class="btn btn-info" type="submit" value="Modifier">Modifier</button>
+</div>
 </form>
     
 @stop

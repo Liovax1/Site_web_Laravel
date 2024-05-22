@@ -6,6 +6,8 @@
 <br>
 <form action="{{ url('ajouterUnUtilisateur') }}" method="POST">
     @csrf 
+    <div class="container">
+    <div class="table-responsive">
     <table class="table">
     <thead>
     <tr>
@@ -32,7 +34,9 @@
 </tr>
 </thread>
 </table>
+</div>
     <button class="btn btn-info" type="submit" value="Ajouter">Ajouter</button>
+</div>
 </form>
 
 @stop

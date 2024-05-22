@@ -36,6 +36,8 @@
         overflow: hidden;
     }
 
+
+
 body {
   --sb-track-color: #232e33;
   --sb-thumb-color: #5d5e63;
