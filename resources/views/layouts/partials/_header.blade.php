@@ -19,9 +19,9 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownGestions" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestion</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownGestions">
-                            <li><a class="dropdown-item" href="{{ route('villes') }}">Gérer les Villes</a></li>
-                            <li><a class="dropdown-item" href="{{ route('tousLesParkings') }}">Gérer les Parkings</a></li>
-                            <li><a class="dropdown-item" href="{{ route('tousLesNoeudsLoras') }}">Gérer les Noeuds</a></li>
+                            <li><a class="dropdown-item" href="{{ route('villes') }}">Gestion des Villes</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tousLesParkings') }}">Gestion des Parkings</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tousLesNoeudsLoras') }}">Gestion des Noeuds</a></li>
                             <li><a class="dropdown-item" href="{{ route('gestionUser') }}">Gestion des Utilisateurs</a></li>
                         </ul>
                     </li>
@@ -49,8 +49,8 @@
                 <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownGestions" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestion</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownGestions">
-                            <li><a class="dropdown-item" href="{{ route('tousLesParkings') }}">Gérer les Parkings</a></li>
-                            <li><a class="dropdown-item" href="{{ route('tousLesNoeudsLoras') }}">Gérer les Noeuds</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tousLesParkings') }}">Gestion des Parkings</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tousLesNoeudsLoras') }}">Gestion des Noeuds</a></li>
                         </ul>
                     </li>
                     
@@ -74,7 +74,7 @@
                 @elseif(auth()->user()->hasRole('gestionnaire_place_parking'))
                 
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ route('tousLesParkings') }}">Ajuster place</a>
+                    <a class="nav-link text-dark" href="{{ route('tousLesParkings') }}">Gestion des Parkings</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="{{ route('apropos') }}">A propos</a>
