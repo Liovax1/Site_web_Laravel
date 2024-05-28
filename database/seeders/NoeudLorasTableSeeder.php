@@ -23,7 +23,7 @@ class NoeudLorasTableSeeder extends Seeder
         [   
             'nom_noeud' => 'D1',
             'type_noeud' => 'Input',
-            'dev_eui' => '91648df7cbaf2c1d',
+            'dev_eui' => '798902924a13e2fb',
             'parking_id'=>1
         ],
 
