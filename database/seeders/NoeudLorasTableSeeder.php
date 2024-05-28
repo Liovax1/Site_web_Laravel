@@ -21,17 +21,17 @@ class NoeudLorasTableSeeder extends Seeder
 
         DB::table('noeud_loras')->insert([
         [   
-            'nom_noeud' => 'D1',
+            'nom_noeud' => 'DI1',
             'type_noeud' => 'Input',
             'dev_eui' => '798902924a13e2fb',
             'parking_id'=>1
         ],
 
         [   
-            'nom_noeud' => 'D2',
-            'type_noeud' => 'Output',
+            'nom_noeud' => 'DI2',
+            'type_noeud' => 'Input',
             'dev_eui' => '68915d8871ccfc25',
-            'parking_id'=>1
+            'parking_id'=>2
         ],
 
         [   
@@ -42,14 +42,14 @@ class NoeudLorasTableSeeder extends Seeder
         ],
 
         [   
-            'nom_noeud' => 'D3',
-            'type_noeud' => 'Input',
+            'nom_noeud' => 'DO1',
+            'type_noeud' => 'Output',
             'dev_eui' => 'c1ce7f659cd1285b',
-            'parking_id'=>2
+            'parking_id'=>1
         ],
 
         [   
-            'nom_noeud' => 'D4',
+            'nom_noeud' => 'DO2',
             'type_noeud' => 'Output',
             'dev_eui' => '46b54db015d6b787',
             'parking_id'=>2
