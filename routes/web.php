@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +51,9 @@ Route::get('/parkingsVille/{id}', 'App\Http\Controllers\PagesParkingController@p
 
 
 
+Route::get('/accueil','App\Http\Controllers\PagesAccueilController@accueil')->name('accueil');
 
+Route::get('/connexion','App\Http\Controllers\Auth\LoginController@connexion')->name('connexion') ;
 
 Route::get('/apropos',
 'App\Http\Controllers\PagesAproposController@apropos')->name('apropos') ;
@@ -75,9 +78,6 @@ Route::post('/ajoutNoeud', 'App\Http\Controllers\PagesNoeudLoraController@ajoutN
 
 Route::delete('/noeud_lora/{id}/delete', 'App\Http\Controllers\PagesNoeudLoraController@delete');
 
-Route::get('/accueil','App\Http\Controllers\PagesAccueilController@accueil')->name('accueil');
-
-Route::get('/connexion','App\Http\Controllers\Auth\LoginController@connexion')->name('connexion') ;
 
 Route::get('/listeDesParkings/{id}','App\Http\Controllers\PagesListeParkingsController@listeDesParkings')->name('listeDesParkings');
 
