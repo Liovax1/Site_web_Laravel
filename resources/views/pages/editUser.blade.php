@@ -21,7 +21,7 @@
       <tr>
             <td><input type="text" name="name" id="name" value="{!! $userFind->name !!}"> <br></td>
             <td><input type="text" name="email" id="email" value="{!! $userFind->email !!}"> <br></td>
-            <td><input type="password" name="password" id="password" value=""><br> <br></td>
+            <td><input type="password" name="password" id="password" value="{!! $userFind->password !!}"><br> <br></td>
             <td><select id="role_id" name="role_id" value="{!! $userFind->role_id !!}">
                 <option></option>
                 @foreach ($roles as $role)
