@@ -100,7 +100,11 @@
 @endif
 
 
-
+@if ($errors->any())
+        <div class="alert alert-danger">
+            Veuillez remplir tous les champs du formulaire correctement
+        </div>
+        @endif
 
     <!-- Boutons -->
     <div class="text-right mt-5">

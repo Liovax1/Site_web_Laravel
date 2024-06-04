@@ -49,7 +49,7 @@ class PagesNoeudLoraController extends Controller
         $id = $request->input('id');
         
         $validatedData = $request->validate([
-            'nom_noeud' => 'required',
+            'nom_noeud' => 'required|alpha|max:255',
             'dev_eui' => 'required',
             'parking_id_' . $id => 'required', // Ajout de l'ID au nom du champ
         ]);
@@ -86,7 +86,7 @@ class PagesNoeudLoraController extends Controller
     public function ajoutNoeud(Request $request)
 {
     $validatedData = $request->validate([
-        'nom_noeud' => 'required',
+        'nom_noeud' => 'required|alpha|max:255',
         'dev_eui' => 'required',
     ]);
     $noeud_lora = new NoeudLora;

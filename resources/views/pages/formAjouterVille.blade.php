@@ -31,7 +31,7 @@
 
     @if ($errors->any())
         <div class="alert alert-danger">
-            Veuillez remplir tous les champs du formulaire.
+            Veuillez remplir tous les champs du formulaire correctement
         </div>
         @endif
 

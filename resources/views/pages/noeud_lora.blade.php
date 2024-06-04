@@ -13,11 +13,6 @@
         <input type="text" id="nom_noeud" name="nom_noeud" value="{!! $noeudLoraFind->nom_noeud !!}" class="form-control">
     </div>
 
-    <!-- <div class="form-group">
-        <label for="nom_noeud_{!! $noeudLoraFind->id !!}">Nom du Noeud:</label>
-        <input type="text" id="nom_noeud_{!! $noeudLoraFind->id !!}" name="nom_noeud_{!! $noeudLoraFind->id !!}" value="{!! $noeudLoraFind->nom_noeud !!}" class="form-control">
-    </div> -->
-
 
     <div class="form-group">
         <label for="type_noeud">Type de noeud:</label>

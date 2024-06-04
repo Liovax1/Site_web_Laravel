@@ -38,7 +38,8 @@
                     </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-primary mr-4" data-id="{!! $noeud_lora->id !!}">Éditer</button>
-                        <form action="/noeud_lora/{!! $noeud_lora->id !!}/delete" method="POST" style="display: inline;">
+                        <form action="/noeud_lora/{!! $noeud_lora->id !!}/delete" method="POST" style="display: inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce noeud lora ?');">
+                        
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Supprimer</button>
