@@ -29,6 +29,7 @@
                 @endforeach
             </select><br></td>
             <td><select id="ville_id" name="ville_id" value="{!! $userFind->ville_id !!}">
+            <option value="0">Tout</option>
             @foreach ($villes as $ville)
             <option value="{{ $ville->id }}" @if($ville->id == $userFind->ville_id) selected @endif>{{ $ville->nom }}</option>
             @endforeach

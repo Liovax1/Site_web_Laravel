@@ -20,4 +20,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/setPlaceDispo/{idParking}/{nombrePlaceDispo}', 'App\Http\Controllers\ApiGaBuZoMeuController@setPlaceDispo')->name('setPlaceDispo');
 Route::get('/getInfoNoeud/{infoNoeudParking}', 'App\Http\Controllers\ApiGaBuZoMeuController@getInfoNoeud')->name('getInfoNoeud');
-Route::get('/getInfoParking/{idParking}', 'App\Http\Controllers\ApiGaBuZoMeuController@getInfoParking')->name('getInfoParking');

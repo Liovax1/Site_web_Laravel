@@ -59,7 +59,7 @@
                 @endforeach
             </tbody>
         </table>
-        @if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('gestionnaire_parking') && Auth::user()->ville_id == $parking->ville_id)
+        @if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('gestionnaire_parking'))
         <br><div class="d-flex justify-content-end mr-3">
             <a href="/formAjouterParking" class="btn btn-success">Ajouter</a>
         </div>
