@@ -45,74 +45,22 @@ class PagesVilleController extends Controller
 
 
 
-    // public function parking($id)
-    // {
-    //     $parking = Parking::find($id);
-    //     $parkings = DB::table('parkings')->select('nom_parking')->distinct()->get(); 
-    //     $villes = Ville::all(); 
-    //     return view('pages/parking')
-    //         ->with('parking', $parking)
-    //         ->with('parkings', $parkings)
-    //         ->with('villes', $villes);
-    // }
-
-    // public function tousLesParkings()
-    // {
-    //     $ville = new Ville();
-    //     $villes = $ville->all();
-    //     $tousLesParkings = [];
-    //     foreach ($villes as $ville) {
-    //         $parkings = $ville->parkings;
-    //         array_push($tousLesParkings, ...$parkings);
-    //     }
-    //     return view('pages/tousLesParkings')
-    //         ->with('parkings', $tousLesParkings)
-    //         ->with('villes', $villes);
-    // }
-
-    // public function save(Request $request)
-    // {
-
-    //     foreach ($request->all() as $key => $value) {
-    //         if (str_starts_with($key, 'id_')) {
-    //             $id = substr($key, 3);
-
-                
-    //             $validatedData = $request->validate([
-    //                 'ville_' . $id => 'required',
-    //             ]);
-
-    //             $parking = Parking::find($id);
-    //             if ($parking) {
-    //                 $parking->latitude = $request->input('latitude_' . $id);
-    //                 $parking->longitude = $request->input('longitude_' . $id);
-    //                 $parking->nombre_place_dispo = $request->input('nombre_place_dispo_' . $id);
-    //                 $parking->nombre_place_total = $request->input('nombre_place_total_' . $id);
-    //                 $parking->ville_id = $validatedData['ville_' . $id];
-    //                 $parking->save();
-    //             }
-    //         }
-    //     }
-    //     return back();
-    // }
-
-
-
+   
     public function saveVille(Request $request)
     {
-
         if (!Auth::check() || !Auth::user()->hasRole('admin')) {
             return redirect()->route('accueil');
         }
     
         $validatedData = $request->validate([
-            'nom' => 'required',
-            'code_postal' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            'nom' => 'required|alpha|max:255',
+            'code_postal' => 'required|digits:5',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
         ]);
+    
         $ville = Ville::find($request->input('id'));
-
+    
         if ($ville) {
             $ville->nom = $request->input('nom');
             $ville->latitude = $request->input('latitude');
@@ -122,10 +70,10 @@ class PagesVilleController extends Controller
         } else {
             return redirect()->back()->withErrors(['error' => 'Ville not found']);
         }
-
+    
         return redirect()->route('villes');
     }
-
+    
 
 
     public function createVille()
@@ -149,10 +97,10 @@ class PagesVilleController extends Controller
     }
 
     $validatedData = $request->validate([
-        'nom' => 'required',
-        'code_postal' => 'required',
-        'latitude' => 'required',
-        'longitude' => 'required',
+        'nom' => 'required|alpha|max:255',
+        'code_postal' => 'required|digits:5',
+        'latitude' => 'required|numeric',
+        'longitude' => 'required|numeric',
     ]);
     $ville = new Ville;
     $ville->nom = $request->input('nom');
@@ -178,64 +126,4 @@ public function delete($id)
     return redirect('/villes');
 }
   
-
-
-
-    // public function saveParking(Request $request)
-    // {
-    //     $parking = Parking::find($request->input('id'));
-    
-    //     if ($parking) {
-    //         $parking->nom_parking = $request->input('nom_parking');
-    //         $parking->latitude = $request->input('latitude');
-    //         $parking->longitude = $request->input('longitude');
-    //         $parking->nombre_place_dispo = $request->input('nombre_place_dispo');
-    //         $parking->nombre_place_total = $request->input('nombre_place_total');
-    
-    //         $ville = Ville::where('nom', $request->input('ville'))->first();
-    
-    //         if ($ville) {
-    //             $parking->ville()->associate($ville);
-    //         }
-    
-    //         $parking->save();
-    //     } else {
-    //         return redirect()->back()->withErrors(['error' => 'Parking not found']);
-    //     }
-    
-    //     return redirect()->route('tousLesParkings');
-    // }
-
-
-
-    // public function createParking()
-    // {
-    //     $villes = Ville::all();
-    //     return view('pages/formAjouterParking',  ['villes' => $villes]);
-    // }
-
-
-//     public function ajoutParking(Request $request)
-// {
-//     $parking = new Parking;
-//     $parking->nom_parking = $request->input('nom_parking');
-//     $parking->ville_id = $request->input('ville_id');
-//     $parking->latitude = $request->input('latitude');
-//     $parking->longitude = $request->input('longitude');
-//     $parking->nombre_place_dispo = $request->input('nombre_place_dispo');
-//     $parking->nombre_place_total = $request->input('nombre_place_total');
-//     $parking->save();
-
-//     return redirect()->route('tousLesParkings');
-// }
-
-
-// public function delete($id)
-// {
-//     $parking = Parking::findOrFail($id);
-//     $parking->delete();
-
-//     return redirect('/tousLesParkings');
-// }
-    
 }

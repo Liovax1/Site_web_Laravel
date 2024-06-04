@@ -25,7 +25,7 @@
                 <td class="text-center">{!! $ville->longitude !!}</td>
                 <td class="text-center">
                         <button type="button" class="btn btn-primary mr-5" data-id="{!! $ville->id !!}">Éditer</button>
-                        <form action="/ville/{!! $ville->id !!}/delete" method="POST" style="display: inline;">
+                        <form action="/ville/{!! $ville->id !!}/delete" method="POST" style="display: inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer cette ville ?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Supprimer</button>

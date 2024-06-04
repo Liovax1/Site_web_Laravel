@@ -36,7 +36,7 @@
                     <td class="text-center">{!! $parking->nombre_place_total !!}</td>
                     <td class="text-center">
                         <button type="button" class="btn btn-primary mr-2" data-id="{!! $parking->id !!}">Éditer</button>
-                        <form action="/parking/{!! $parking->id !!}/delete" method="POST" style="display: inline;">
+                        <form action="/parking/{!! $parking->id !!}/delete" method="POST" style="display: inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce parking ?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Supprimer</button>

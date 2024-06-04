@@ -25,7 +25,7 @@
     
         @if ($errors->any())
         <div class="alert alert-danger">
-            Veuillez remplir tous les champs du formulaire.
+            Veuillez remplir tous les champs du formulaire correctement
         </div>
         @endif
         <!-- Boutons -->
@@ -39,23 +39,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-
-    <!-- <script>
-document.querySelector('form').addEventListener('submit', function(e) {
-    // Parcourir tous les champs du formulaire
-    var inputs = this.querySelectorAll('input[type="text"], select');
-    for (var i = 0; i < inputs.length; i++) {
-        // Vérifier si le champ est vide
-        if (inputs[i].value == '') {
-            // Empêcher la soumission du formulaire
-            e.preventDefault();
-            // Afficher un message d'erreur
-            alert('Veuillez remplir tous les champs du formulaire.');
-            // Sortir de la boucle
-            break;
-        }
-    }
-});
-</script> -->
 @stop
 

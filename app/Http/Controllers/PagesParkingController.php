@@ -73,11 +73,11 @@ class PagesParkingController extends Controller
     {
         
         $validatedData = $request->validate([
-            'nom_parking' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
-            'nombre_place_dispo' => 'required',
-            'nombre_place_total' => 'required',
+            'nom_parking' => 'required|alpha|max:255',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+            'nombre_place_dispo' => 'required|numeric',
+            'nombre_place_total' => 'required|numeric',
 
         ]);
         $parking = Parking::find($request->input('id'));
@@ -114,11 +114,11 @@ class PagesParkingController extends Controller
     public function ajoutParking(Request $request)
     {
         $validatedData = $request->validate([
-            'nom_parking' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
-            'nombre_place_dispo' => 'required',
-            'nombre_place_total' => 'required',
+            'nom_parking' => 'required|alpha|max:255',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+            'nombre_place_dispo' => 'required|numeric',
+            'nombre_place_total' => 'required|numeric',
 
         ]);
         $parking = new Parking;
