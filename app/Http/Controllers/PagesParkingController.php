@@ -100,7 +100,7 @@ class PagesParkingController extends Controller
             return redirect()->back()->withErrors(['error' => 'Parking not found']);
         }
     
-        return redirect()->route('parkingsVille', ['id' => $ville->id]);
+        return redirect()->route('parkingsVille', ['id' => $parking->ville->id]);
 
     }
 

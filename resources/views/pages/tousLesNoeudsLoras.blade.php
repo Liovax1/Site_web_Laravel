@@ -18,34 +18,23 @@
             </thead>
             <tbody>
                 @foreach($noeud_loras as $noeud_lora)
-                <tr>
-                    <td class="text-center">{!! $noeud_lora->nom_noeud !!}</td>
-                    <td class="text-center">{!! $noeud_lora->type_noeud !!}</td>
-                    <td class="text-center">{!! $noeud_lora->dev_eui !!}</td>
-                    <td class="text-center">
-                        @foreach($parkings as $parking)
-                        @if($noeud_lora->parking_id == $parking->id)
-                        {!! $parking->ville->nom !!}
-                        @endif
-                        @endforeach
-                    </td>
-                    <td class="text-center">
-                        @foreach($parkings as $parking)
-                        @if($noeud_lora->parking_id == $parking->id)
-                        {!! $parking->nom_parking !!}
-                        @endif
-                        @endforeach
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-primary mr-4" data-id="{!! $noeud_lora->id !!}">Éditer</button>
-                        <form action="/noeud_lora/{!! $noeud_lora->id !!}/delete" method="POST" style="display: inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce noeud lora ?');">
-                        
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
-                        </form>
-                    </td>
-                </tr>
+                    @if (Auth::user()->hasRole('admin') || (Auth::user()->hasRole('gestionnaire_parking') && Auth::user()->ville_id == $noeud_lora->parking->ville_id))
+                        <tr>
+                            <td class="text-center">{!! $noeud_lora->nom_noeud !!}</td>
+                            <td class="text-center">{!! $noeud_lora->type_noeud !!}</td>
+                            <td class="text-center">{!! $noeud_lora->dev_eui !!}</td>
+                            <td class="text-center">{!! $noeud_lora->parking->ville->nom !!}</td>
+                            <td class="text-center">{!! $noeud_lora->parking->nom_parking !!}</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-primary mr-4" data-id="{!! $noeud_lora->id !!}">Éditer</button>
+                                <form action="/noeud_lora/{!! $noeud_lora->id !!}/delete" method="POST" style="display: inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce noeud lora ?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>

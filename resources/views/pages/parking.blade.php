@@ -40,25 +40,10 @@
 </div>
 @endif
 
-@if (Auth::user()->hasRole('gestionnaire_place_parking'))
 
-<div class="form-group">
-    <label for="ville">Ville :</label>
-    <select id="ville" name="ville" class="form-control" readonly>
-        @foreach ($villes as $ville)
-            <option value="{{ $ville->nom }}"
-                @if ($ville->nom == $parking->ville->nom)
-                    selected
-                @endif
-            >
-                {{ $ville->nom }}
-            </option>
-        @endforeach
-    </select>
-</div>
-@endif
 
 @if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('gestionnaire_parking'))
+
     <div class="form-group">
         <label for="latitude">Latitude :</label>
         <input type="text" id="latitude" name="latitude" value="{!! $parking->latitude !!}" class="form-control">
@@ -71,7 +56,11 @@
 
 
 @if (Auth::user()->hasRole('gestionnaire_place_parking'))
-    <div class="form-group">
+<div class="form-group">
+        <label for="ville">Ville :</label>
+        <input type="text" id="ville" name="Ville" value="{!! $parking->ville->nom !!}" class="form-control" readonly>
+    </div>    
+<div class="form-group">
         <label for="latitude">Latitude :</label>
         <input type="text" id="latitude" name="latitude" value="{!! $parking->latitude !!}" class="form-control" readonly>
     </div>
