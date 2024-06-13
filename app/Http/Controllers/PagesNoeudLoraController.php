@@ -37,7 +37,7 @@ class PagesNoeudLoraController extends Controller
         return view('pages/noeud_lora')
             ->with('noeudLoraFind', $noeudLoraFind)
             ->with('nomsChamps', $nomsChamps)
-            ->with('parkings', $parkings); // Ajout de cette ligne
+            ->with('parkings', $parkings); 
     }
 
 
@@ -49,16 +49,16 @@ class PagesNoeudLoraController extends Controller
         $id = $request->input('id');
         
         $validatedData = $request->validate([
-            'nom_noeud' => 'required|alpha|max:255',
+            'nom_noeud' => 'required',
             'dev_eui' => 'required',
-            'parking_id_' . $id => 'required', // Ajout de l'ID au nom du champ
+            'parking_id_' . $id => 'required', 
         ]);
     
         $noeud_lora = NoeudLora::find($id);
         $noeud_lora->nom_noeud = $request->input('nom_noeud');
         $noeud_lora->type_noeud = $request->input('type_noeud');
         $noeud_lora->dev_eui = $request->input('dev_eui');
-        $noeud_lora->parking_id = $request->input('parking_id_' . $id); // Utilisation du même nom de champ
+        $noeud_lora->parking_id = $request->input('parking_id_' . $id); 
         $noeud_lora->save();
     
         return redirect()->route('tousLesNoeudsLoras');
@@ -86,7 +86,7 @@ class PagesNoeudLoraController extends Controller
     public function ajoutNoeud(Request $request)
 {
     $validatedData = $request->validate([
-        'nom_noeud' => 'required|alpha|max:255',
+        'nom_noeud' => 'required',
         'dev_eui' => 'required',
     ]);
     $noeud_lora = new NoeudLora;

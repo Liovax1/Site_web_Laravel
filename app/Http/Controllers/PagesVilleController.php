@@ -53,10 +53,10 @@ class PagesVilleController extends Controller
         }
     
         $validatedData = $request->validate([
-            'nom' => 'required|alpha|max:255',
+            'nom' => 'required',
             'code_postal' => 'required|digits:5',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
+            'latitude' => 'required',
+            'longitude' => 'required',
         ]);
     
         $ville = Ville::find($request->input('id'));
@@ -97,10 +97,10 @@ class PagesVilleController extends Controller
     }
 
     $validatedData = $request->validate([
-        'nom' => 'required|alpha|max:255',
+        'nom' => 'required',
         'code_postal' => 'required|digits:5',
-        'latitude' => 'required|numeric',
-        'longitude' => 'required|numeric',
+        'latitude' => 'required',
+        'longitude' => 'required',
     ]);
     $ville = new Ville;
     $ville->nom = $request->input('nom');

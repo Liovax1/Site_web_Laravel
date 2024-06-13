@@ -73,7 +73,7 @@ class PagesParkingController extends Controller
     {
         
         $validatedData = $request->validate([
-            'nom_parking' => 'required|alpha|max:255',
+            'nom_parking' => 'required',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'nombre_place_dispo' => 'required|numeric',
@@ -114,7 +114,7 @@ class PagesParkingController extends Controller
     public function ajoutParking(Request $request)
     {
         $validatedData = $request->validate([
-            'nom_parking' => 'required|alpha|max:255',
+            'nom_parking' => 'required',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'nombre_place_dispo' => 'required|numeric',
